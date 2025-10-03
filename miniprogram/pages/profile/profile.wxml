@@ -1,0 +1,113 @@
+<!--个人中心页面-->
+<navigation-bar title="个人中心" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 用户信息 -->
+    <view class="user-profile">
+      <view class="avatar">
+        <image src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiM2MzY2RjEiLz4KPHN2ZyB4PSIyMCIgeT0iMjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTIgMTJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTIgMTRDOC42ODYyOSAxNCA2IDE2LjY4NjMgNiAyMEgxOEMxOCAxNi42ODYzIDE1LjMxMzcgMTQgMTIgMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4KPC9zdmc+" mode="aspectFill"></image>
+      </view>
+      <view class="user-info">
+        <text class="user-name">张小明</text>
+        <text class="user-title">心理健康管理师</text>
+        <view class="user-stats">
+          <view class="stat-item">
+            <text class="stat-number">28</text>
+            <text class="stat-label">连续打卡</text>
+          </view>
+          <view class="stat-item">
+            <text class="stat-number">156</text>
+            <text class="stat-label">总完成</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能菜单 -->
+    <view class="menu-section">
+      <view class="menu-group">
+        <view class="menu-item" bindtap="navigateToMyData">
+          <view class="menu-icon">
+            <text class="icon">📊</text>
+          </view>
+          <view class="menu-content">
+            <text class="menu-title">我的数据</text>
+            <text class="menu-desc">查看详细的数据分析</text>
+          </view>
+          <view class="menu-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+
+        <view class="menu-item" bindtap="navigateToAchievements">
+          <view class="menu-icon">
+            <text class="icon">🏅</text>
+          </view>
+          <view class="menu-content">
+            <text class="menu-title">成就徽章</text>
+            <text class="menu-desc">查看获得的成就和徽章</text>
+          </view>
+          <view class="menu-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+
+        <view class="menu-item" bindtap="navigateToCalendar">
+          <view class="menu-icon">
+            <text class="icon">📅</text>
+          </view>
+          <view class="menu-content">
+            <text class="menu-title">打卡日历</text>
+            <text class="menu-desc">查看历史打卡记录</text>
+          </view>
+          <view class="menu-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+      </view>
+
+      <view class="menu-group">
+        <view class="menu-item" bindtap="navigateToReminders">
+          <view class="menu-icon">
+            <text class="icon">🔔</text>
+          </view>
+          <view class="menu-content">
+            <text class="menu-title">提醒设置</text>
+            <text class="menu-desc">管理练习和测试提醒</text>
+          </view>
+          <view class="menu-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+
+        <view class="menu-item" bindtap="navigateToPrivacy">
+          <view class="menu-icon">
+            <text class="icon">🛡️</text>
+          </view>
+          <view class="menu-content">
+            <text class="menu-title">隐私设置</text>
+            <text class="menu-desc">管理数据隐私和安全</text>
+          </view>
+          <view class="menu-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+
+        <view class="menu-item" bindtap="navigateToHelp">
+          <view class="menu-icon">
+            <text class="icon">❓</text>
+          </view>
+          <view class="menu-content">
+            <text class="menu-title">帮助与反馈</text>
+            <text class="menu-desc">获取帮助或提供反馈</text>
+          </view>
+          <view class="menu-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+

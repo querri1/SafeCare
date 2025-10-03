@@ -1,0 +1,230 @@
+/* 数据中心页面样式 */
+.scrollarea {
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.container {
+  padding: 20rpx;
+}
+
+/* 数据概览 */
+.data-overview {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.data-card {
+  flex: 1;
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.data-icon {
+  width: 60rpx;
+  height: 60rpx;
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20rpx;
+}
+
+.data-icon .icon {
+  font-size: 28rpx;
+  color: white;
+}
+
+.data-title {
+  font-size: 24rpx;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.data-number {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #1f2937;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.data-unit {
+  font-size: 20rpx;
+  color: #9ca3af;
+  display: block;
+}
+
+/* 图表区域 */
+.chart-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.chart-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 8rpx;
+}
+
+.chart-btn {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: none;
+  border-radius: 8rpx;
+  padding: 12rpx 20rpx;
+  font-size: 24rpx;
+}
+
+.chart-btn.active {
+  background: #6366F1;
+  color: white;
+}
+
+.chart-container {
+  height: 300rpx;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+
+.chart-bars {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.bar {
+  width: 24rpx;
+  background: linear-gradient(180deg, #6366F1, #8B5CF6);
+  border-radius: 12rpx 12rpx 0 0;
+  margin-bottom: 12rpx;
+  min-height: 20rpx;
+}
+
+.bar-label {
+  font-size: 20rpx;
+  color: #6b7280;
+}
+
+/* 测试记录 */
+.test-records {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: #6366F1;
+  font-size: 24rpx;
+  padding: 0;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f3f4f6;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-icon {
+  width: 60rpx;
+  height: 60rpx;
+  background: #f3f4f6;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.record-icon .icon {
+  font-size: 28rpx;
+}
+
+.record-content {
+  flex: 1;
+}
+
+.record-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #1f2937;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.record-desc {
+  font-size: 24rpx;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.record-date {
+  font-size: 22rpx;
+  color: #9ca3af;
+  display: block;
+}
+
+.record-score {
+  margin-left: 20rpx;
+}
+
+.score {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #6366F1;
+}
+

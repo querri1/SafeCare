@@ -1,0 +1,122 @@
+<!--数据中心页面-->
+<navigation-bar title="数据中心" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 数据概览 -->
+    <view class="data-overview">
+      <view class="data-card">
+        <view class="data-icon">
+          <text class="icon">🔥</text>
+        </view>
+        <view class="data-content">
+          <text class="data-title">连续打卡</text>
+          <text class="data-number">7</text>
+          <text class="data-unit">天</text>
+        </view>
+      </view>
+
+      <view class="data-card">
+        <view class="data-icon">
+          <text class="icon">📈</text>
+        </view>
+        <view class="data-content">
+          <text class="data-title">本周完成</text>
+          <text class="data-number">12</text>
+          <text class="data-unit">次</text>
+        </view>
+      </view>
+
+      <view class="data-card">
+        <view class="data-icon">
+          <text class="icon">🏆</text>
+        </view>
+        <view class="data-content">
+          <text class="data-title">本月成就</text>
+          <text class="data-number">5</text>
+          <text class="data-unit">个</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 图表区域 -->
+    <view class="chart-section">
+      <view class="chart-header">
+        <text class="chart-title">最近7天打卡记录</text>
+        <view class="chart-controls">
+          <button class="chart-btn active" bindtap="switchChartPeriod" data-period="week">周</button>
+          <button class="chart-btn" bindtap="switchChartPeriod" data-period="month">月</button>
+        </view>
+      </view>
+      <view class="chart-container">
+        <view class="chart-bars">
+          <view class="bar-group">
+            <view class="bar" style="height: 60%"></view>
+            <text class="bar-label">周一</text>
+          </view>
+          <view class="bar-group">
+            <view class="bar" style="height: 80%"></view>
+            <text class="bar-label">周二</text>
+          </view>
+          <view class="bar-group">
+            <view class="bar" style="height: 100%"></view>
+            <text class="bar-label">周三</text>
+          </view>
+          <view class="bar-group">
+            <view class="bar" style="height: 70%"></view>
+            <text class="bar-label">周四</text>
+          </view>
+          <view class="bar-group">
+            <view class="bar" style="height: 90%"></view>
+            <text class="bar-label">周五</text>
+          </view>
+          <view class="bar-group">
+            <view class="bar" style="height: 100%"></view>
+            <text class="bar-label">周六</text>
+          </view>
+          <view class="bar-group">
+            <view class="bar" style="height: 85%"></view>
+            <text class="bar-label">周日</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 测试记录 -->
+    <view class="test-records">
+      <view class="section-title">
+        <text class="title">测试记录</text>
+        <button class="btn-text" bindtap="viewAllRecords">查看全部</button>
+      </view>
+
+      <view class="record-item" bindtap="viewRecordDetail" data-id="1">
+        <view class="record-icon">
+          <text class="icon">🧠</text>
+        </view>
+        <view class="record-content">
+          <text class="record-title">PHQ-9 抑郁筛查</text>
+          <text class="record-desc">轻度抑郁 - 建议关注</text>
+          <text class="record-date">2024年1月15日</text>
+        </view>
+        <view class="record-score">
+          <text class="score">8</text>
+        </view>
+      </view>
+
+      <view class="record-item" bindtap="viewRecordDetail" data-id="2">
+        <view class="record-icon">
+          <text class="icon">❤️</text>
+        </view>
+        <view class="record-content">
+          <text class="record-title">GAD-7 焦虑筛查</text>
+          <text class="record-desc">轻度焦虑 - 正常范围</text>
+          <text class="record-date">2024年1月14日</text>
+        </view>
+        <view class="record-score">
+          <text class="score">5</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安心宝 - 心理健康管理</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 主容器 -->
+    <div class="app-container">
+        <!-- 顶部状态栏 -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span class="time">9:41</span>
+            </div>
+            <div class="status-right">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-three-quarters"></i>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <!-- 治愈中心页面 -->
+            <div class="page active" id="healing-center">
+                <div class="page-header">
+                    <h1>治愈中心</h1>
+                    <div class="header-actions">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </div>
+
+                <!-- 今日治愈概览 -->
+                <div class="healing-overview">
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>八段锦练习</h3>
+                            <p>今日已完成 1/1 次</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-primary">开始练习</button>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>五音疗法</h3>
+                            <p>今日已完成 0/1 次</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-primary">开始疗愈</button>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>心理健康自测</h3>
+                            <p>本周已完成 2/3 次</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 67%"></div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-secondary">开始测试</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 治愈列表 -->
+                <div class="healing-list">
+                    <div class="section-title">
+                        <h2>今日治愈</h2>
+                        <span class="healing-count">4 项治愈</span>
+                    </div>
+
+                    <div class="healing-item completed">
+                        <div class="healing-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="healing-content">
+                            <h4>八段锦练习</h4>
+                            <p>完成一套八段锦动作</p>
+                            <span class="healing-time">预计 15 分钟</span>
+                        </div>
+                        <div class="healing-status">
+                            <span class="status-badge completed">已完成</span>
+                        </div>
+                    </div>
+
+                    <div class="healing-item">
+                        <div class="healing-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="healing-content">
+                            <h4>五音疗法 - 宫音</h4>
+                            <p>调节脾胃，舒缓情绪</p>
+                            <span class="healing-time">预计 10 分钟</span>
+                        </div>
+                        <div class="healing-status">
+                            <button class="btn-start">开始疗愈</button>
+                        </div>
+                    </div>
+
+                    <div class="healing-item">
+                        <div class="healing-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="healing-content">
+                            <h4>PHQ-9 抑郁筛查</h4>
+                            <p>评估过去两周的情绪状态</p>
+                            <span class="healing-time">预计 5 分钟</span>
+                        </div>
+                        <div class="healing-status">
+                            <button class="btn-start">开始测试</button>
+                        </div>
+                    </div>
+
+                    <div class="healing-item">
+                        <div class="healing-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="healing-content">
+                            <h4>GAD-7 焦虑筛查</h4>
+                            <p>评估过去两周的焦虑程度</p>
+                            <span class="healing-time">预计 5 分钟</span>
+                        </div>
+                        <div class="healing-status">
+                            <button class="btn-start">开始测试</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数据中心页面 -->
+            <div class="page" id="data-center">
+                <div class="page-header">
+                    <h1>数据中心</h1>
+                    <div class="header-actions">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+
+                <!-- 数据概览 -->
+                <div class="data-overview">
+                    <div class="data-card">
+                        <div class="data-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="data-content">
+                            <h3>连续打卡</h3>
+                            <p class="data-number">7</p>
+                            <p class="data-unit">天</p>
+                        </div>
+                    </div>
+
+                    <div class="data-card">
+                        <div class="data-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="data-content">
+                            <h3>本周完成</h3>
+                            <p class="data-number">12</p>
+                            <p class="data-unit">次</p>
+                        </div>
+                    </div>
+
+                    <div class="data-card">
+                        <div class="data-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="data-content">
+                            <h3>本月成就</h3>
+                            <p class="data-number">5</p>
+                            <p class="data-unit">个</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图表区域 -->
+                <div class="chart-section">
+                    <div class="chart-header">
+                        <h3>最近7天打卡记录</h3>
+                        <div class="chart-controls">
+                            <button class="chart-btn active">周</button>
+                            <button class="chart-btn">月</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-bars">
+                            <div class="bar-group">
+                                <div class="bar" style="height: 60%"></div>
+                                <span class="bar-label">周一</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="height: 80%"></div>
+                                <span class="bar-label">周二</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="height: 100%"></div>
+                                <span class="bar-label">周三</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="height: 70%"></div>
+                                <span class="bar-label">周四</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="height: 90%"></div>
+                                <span class="bar-label">周五</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="height: 100%"></div>
+                                <span class="bar-label">周六</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="height: 85%"></div>
+                                <span class="bar-label">周日</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 测试记录 -->
+                <div class="test-records">
+                    <div class="section-title">
+                        <h3>测试记录</h3>
+                        <button class="btn-text">查看全部</button>
+                    </div>
+
+                    <div class="record-item">
+                        <div class="record-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="record-content">
+                            <h4>PHQ-9 抑郁筛查</h4>
+                            <p>轻度抑郁 - 建议关注</p>
+                            <span class="record-date">2024年1月15日</span>
+                        </div>
+                        <div class="record-score">
+                            <span class="score">8</span>
+                        </div>
+                    </div>
+
+                    <div class="record-item">
+                        <div class="record-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="record-content">
+                            <h4>GAD-7 焦虑筛查</h4>
+                            <p>轻度焦虑 - 正常范围</p>
+                            <span class="record-date">2024年1月14日</span>
+                        </div>
+                        <div class="record-score">
+                            <span class="score">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 个人中心页面 -->
+            <div class="page" id="profile">
+                <div class="page-header">
+                    <h1>个人中心</h1>
+                    <div class="header-actions">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+
+                <!-- 用户信息 -->
+                <div class="user-profile">
+                    <div class="avatar">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiM2MzY2RjEiLz4KPHN2ZyB4PSIyMCIgeT0iMjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTIgMTJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTIgMTRDOC42ODYyOSAxNCA2IDE2LjY4NjMgNiAyMEgxOEMxOCAxNi42ODYzIDE1LjMxMzcgMTQgMTIgMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4KPC9zdmc+" alt="用户头像">
+                    </div>
+                    <div class="user-info">
+                        <h2>张小明</h2>
+                        <p>心理健康管理师</p>
+                        <div class="user-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">28</span>
+                                <span class="stat-label">连续打卡</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">156</span>
+                                <span class="stat-label">总完成</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 功能菜单 -->
+                <div class="menu-section">
+                    <div class="menu-group">
+                        <div class="menu-item">
+                            <div class="menu-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="menu-content">
+                                <h4>我的数据</h4>
+                                <p>查看详细的数据分析</p>
+                            </div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="menu-content">
+                                <h4>成就徽章</h4>
+                                <p>查看获得的成就和徽章</p>
+                            </div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="menu-content">
+                                <h4>打卡日历</h4>
+                                <p>查看历史打卡记录</p>
+                            </div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-group">
+                        <div class="menu-item">
+                            <div class="menu-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="menu-content">
+                                <h4>提醒设置</h4>
+                                <p>管理练习和测试提醒</p>
+                            </div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="menu-content">
+                                <h4>隐私设置</h4>
+                                <p>管理数据隐私和安全</p>
+                            </div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="menu-content">
+                                <h4>帮助与反馈</h4>
+                                <p>获取帮助或提供反馈</p>
+                            </div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="bottom-nav">
+            <div class="nav-item active" data-page="healing-center">
+                <div class="nav-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <span class="nav-label">治愈中心</span>
+            </div>
+            <div class="nav-item" data-page="data-center">
+                <div class="nav-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <span class="nav-label">数据中心</span>
+            </div>
+            <div class="nav-item" data-page="profile">
+                <div class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="nav-label">个人中心</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+/* 导航栏样式 */
+.navigation-bar {
+  position: relative;
+  z-index: 5000;
+  background-color: #fff;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.navigation-bar__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+
+.navigation-bar__left {
+  display: flex;
+  align-items: center;
+  min-width: 80rpx;
+}
+
+.navigation-bar__center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+  max-width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navigation-bar__right {
+  display: flex;
+  align-items: center;
+  min-width: 80rpx;
+  justify-content: flex-end;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.back-button:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.back-icon {
+  font-size: 40rpx;
+  font-weight: 300;
+  color: currentColor;
+}
+
