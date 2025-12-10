@@ -1,0 +1,78 @@
+/* 提醒设置页面样式 */
+.scrollarea {
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.container {
+  padding: 20rpx;
+}
+
+.reminder-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.reminder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.reminder-info {
+  flex: 1;
+}
+
+.reminder-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1f2937;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.reminder-desc {
+  font-size: 24rpx;
+  color: #6b7280;
+  display: block;
+}
+
+.reminder-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f3f4f6;
+}
+
+.time-label {
+  font-size: 28rpx;
+  color: #6b7280;
+}
+
+.time-picker {
+  font-size: 28rpx;
+  color: #34D399;
+  font-weight: 500;
+  padding: 12rpx 24rpx;
+  background: #f3f4f6;
+  border-radius: 8rpx;
+}
+
+.tip-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: #6b7280;
+  line-height: 1.6;
+}
+

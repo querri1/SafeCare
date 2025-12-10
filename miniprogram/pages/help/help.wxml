@@ -1,0 +1,40 @@
+<!--帮助与反馈页面-->
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 常见问题 -->
+    <view class="faq-section">
+      <view class="section-title">常见问题</view>
+      <view class="faq-list">
+        <view 
+          class="faq-item {{expandedIndex === index ? 'faq-expanded' : ''}}"
+          wx:for="{{faqList}}" 
+          wx:key="index"
+          bindtap="toggleFaq"
+          data-index="{{index}}"
+        >
+          <view class="faq-question">
+            <text class="question-text">{{item.question}}</text>
+            <text class="question-arrow">{{expandedIndex === index ? '▼' : '▶'}}</text>
+          </view>
+          <view class="faq-answer" wx:if="{{expandedIndex === index}}">
+            <text class="answer-text">{{item.answer}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能按钮 -->
+    <view class="action-section">
+      <button class="action-btn" bindtap="submitFeedback">提交反馈</button>
+    </view>
+
+    <!-- 版本信息 -->
+    <view class="version-section">
+      <text class="version-text">版本号：1.0.0</text>
+      <text class="version-text">© 2024 安心宝</text>
+    </view>
+  </view>
+</scroll-view>
+

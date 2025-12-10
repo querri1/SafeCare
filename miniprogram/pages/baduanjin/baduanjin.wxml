@@ -1,0 +1,127 @@
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<view class="page-container">
+  <!-- 统计卡片 -->
+  <view class="stats-card">
+    <view class="stats-item">
+      <view class="stats-icon">⏱️</view>
+      <view class="stats-content">
+        <text class="stats-label">练习时长</text>
+        <text class="stats-value">{{formattedTime}}</text>
+      </view>
+    </view>
+    <view class="stats-divider"></view>
+    <view class="stats-item">
+      <view class="stats-icon">🎯</view>
+      <view class="stats-content">
+        <text class="stats-label">练习状态</text>
+        <text class="stats-value">{{isPlaying ? '进行中' : '未开始'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 视频卡片 -->
+  <view class="video-card">
+    <video
+      wx:if="{{videoUrl}}"
+      id="baduanjinVideo"
+      class="video-player"
+      src="{{videoUrl}}"
+      controls
+      autoplay
+      enable-danmu="false"
+      show-center-play-btn="true"
+      object-fit="contain"
+      bindended="onVideoEnded"
+      bindplay="onVideoPlay"
+      bindpause="onVideoPause"
+      bindstop="onVideoStop"
+    ></video>
+    <view wx:else class="video-loading">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">视频加载中...</text>
+    </view>
+  </view>
+
+  <!-- 练习说明卡片 -->
+  <view class="info-card">
+    <view class="info-header">
+      <text class="info-title">📋 练习说明</text>
+    </view>
+    <view class="info-content">
+      <view class="info-item" wx:if="{{exerciseType === 'standard'}}">
+        <text class="info-item-title">标准八段锦</text>
+        <text class="info-item-desc">八段锦是一套独立而完整的健身功法，动作舒展优美，如锦缎般柔顺，故名为"八段锦"。练习时需配合呼吸，动作缓慢，有助于调节身心。</text>
+      </view>
+      <view class="info-item" wx:elif="{{exerciseType === 'xiaqi'}}">
+        <text class="info-item-title">消气操</text>
+        <text class="info-item-desc">消气操结合了传统健身与现代运动元素，动作简单易学，节奏明快，适合各个年龄段。在轻松愉快的氛围中达到锻炼效果，帮助释放压力，调节情绪。</text>
+      </view>
+      <view class="info-item" wx:elif="{{exerciseType === 'shoulder'}}">
+        <text class="info-item-title">自在肩颈操</text>
+        <text class="info-item-desc">专门针对肩颈部位设计的舒缓操，动作轻柔舒缓，适合长时间久坐的人群。通过简单的拉伸和转动动作，有效缓解肩颈疲劳和僵硬。</text>
+      </view>
+      <view class="info-item" wx:elif="{{exerciseType === 'herbal'}}">
+        <text class="info-item-title">本草纲目</text>
+        <text class="info-item-desc">结合传统中医理念的健身操，动作流畅自然，如本草般滋养身心。通过舒缓的动作和呼吸配合，帮助调节身体机能，提升整体健康水平。</text>
+      </view>
+      <view class="info-item" wx:elif="{{exerciseType === 'sweat'}}">
+        <text class="info-item-title">暴汗燃脂操</text>
+        <text class="info-item-desc">高强度的有氧运动，节奏明快，动作有力。通过持续的运动帮助燃烧卡路里，提升心肺功能，适合想要快速燃脂和增强体能的用户。</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 练习提示卡片 -->
+  <view class="tips-card">
+    <view class="tips-header">
+      <text class="tips-title">💡 练习提示</text>
+    </view>
+    <view class="tips-content">
+      <view class="tip-item">
+        <text class="tip-icon">✓</text>
+        <text class="tip-text">保持呼吸均匀，动作与呼吸协调</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">✓</text>
+        <text class="tip-text">量力而行，循序渐进，不要勉强</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">✓</text>
+        <text class="tip-text">练习前适当热身，练习后放松</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">✓</text>
+        <text class="tip-text">如有不适，请立即停止练习</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 动作要点（仅标准八段锦显示） -->
+  <view class="points-card" wx:if="{{exerciseType === 'standard'}}">
+    <view class="points-header">
+      <text class="points-title">🎯 动作要点</text>
+    </view>
+    <view class="points-content">
+      <view class="point-item">
+        <text class="point-number">1</text>
+        <text class="point-text">动作要缓慢、柔和，不要过快</text>
+      </view>
+      <view class="point-item">
+        <text class="point-number">2</text>
+        <text class="point-text">保持身体中正，重心稳定</text>
+      </view>
+      <view class="point-item">
+        <text class="point-number">3</text>
+        <text class="point-text">配合自然呼吸，不要憋气</text>
+      </view>
+      <view class="point-item">
+        <text class="point-number">4</text>
+        <text class="point-text">注意力集中，感受身体变化</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+

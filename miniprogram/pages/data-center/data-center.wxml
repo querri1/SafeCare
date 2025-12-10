@@ -1,17 +1,27 @@
 <!--数据中心页面-->
-<navigation-bar title="数据中心" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<navigation-bar title="" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
+    <!-- 未登录提示 -->
+    <view class="login-prompt" wx:if="{{!hasLogin}}">
+      <view class="prompt-icon">🔒</view>
+      <text class="prompt-title">请先登录</text>
+      <text class="prompt-desc">登录后即可查看您的数据统计</text>
+      <button class="btn-login" bindtap="goToLogin">前往登录</button>
+    </view>
+
+    <!-- 已登录内容 -->
+    <block wx:if="{{hasLogin}}">
     <!-- 数据概览 -->
     <view class="data-overview">
       <view class="data-card">
         <view class="data-icon">
-          <text class="icon">🔥</text>
+          <image class="icon-img" src="../../images/icon-fire.png"></image>
         </view>
         <view class="data-content">
           <text class="data-title">连续打卡</text>
-          <text class="data-number">7</text>
+          <text class="data-number">{{consecutiveDays}}</text>
           <text class="data-unit">天</text>
         </view>
       </view>
@@ -22,18 +32,18 @@
         </view>
         <view class="data-content">
           <text class="data-title">本周完成</text>
-          <text class="data-number">12</text>
+          <text class="data-number">{{weekCompleted}}</text>
           <text class="data-unit">次</text>
         </view>
       </view>
 
       <view class="data-card">
         <view class="data-icon">
-          <text class="icon">🏆</text>
+          <image class="icon-img" src="../../images/icon-medal.png"></image>
         </view>
         <view class="data-content">
           <text class="data-title">本月成就</text>
-          <text class="data-number">5</text>
+          <text class="data-number">{{monthAchievements}}</text>
           <text class="data-unit">个</text>
         </view>
       </view>
@@ -42,42 +52,91 @@
     <!-- 图表区域 -->
     <view class="chart-section">
       <view class="chart-header">
-        <text class="chart-title">最近7天打卡记录</text>
+        <text class="chart-title">{{currentPeriod === 'week' ? '最近7天打卡记录' : currentMonth}}</text>
         <view class="chart-controls">
-          <button class="chart-btn active" bindtap="switchChartPeriod" data-period="week">周</button>
-          <button class="chart-btn" bindtap="switchChartPeriod" data-period="month">月</button>
+          <button class="chart-btn {{currentPeriod === 'week' ? 'active' : ''}}" bindtap="switchChartPeriod" data-period="week">周</button>
+          <button class="chart-btn {{currentPeriod === 'month' ? 'active' : ''}}" bindtap="switchChartPeriod" data-period="month">月</button>
         </view>
       </view>
-      <view class="chart-container">
+      
+      <!-- 周视图 -->
+      <view class="chart-container" wx:if="{{currentPeriod === 'week'}}">
         <view class="chart-bars">
-          <view class="bar-group">
-            <view class="bar" style="height: 60%"></view>
-            <text class="bar-label">周一</text>
+          <view class="bar-group {{item.hasCheckin ? 'bar-group-checked' : ''}}" wx:for="{{weekData}}" wx:key="index">
+            <view class="bar-wrapper">
+              <view class="bar {{item.hasCheckin ? 'bar-checked' : ''}}" style="height: {{item.height}}rpx"></view>
+              <view class="emotion-emoji" wx:if="{{item.emotion}}">{{item.emotionEmoji}}</view>
+              <view class="check-icon" wx:if="{{item.hasCheckin && !item.emotion}}">✓</view>
+            </view>
+            <text class="bar-label {{item.hasCheckin ? 'label-checked' : ''}}">{{item.label}}</text>
           </view>
-          <view class="bar-group">
-            <view class="bar" style="height: 80%"></view>
-            <text class="bar-label">周二</text>
+        </view>
+      </view>
+
+      <!-- 月视图 -->
+      <view class="month-container" wx:if="{{currentPeriod === 'month'}}">
+        <view class="month-grid">
+          <view 
+            class="month-day {{item.hasCheckin ? 'day-checked' : ''}}" 
+            wx:for="{{monthData}}" 
+            wx:key="day"
+            bindtap="onMonthDayTap"
+            data-day="{{item.day}}"
+            data-has-checkin="{{item.hasCheckin}}"
+            data-date="{{item.date}}"
+          >
+            <text class="day-number">{{item.day}}</text>
+            <view class="day-dot" wx:if="{{item.hasCheckin}}"></view>
           </view>
-          <view class="bar-group">
-            <view class="bar" style="height: 100%"></view>
-            <text class="bar-label">周三</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 评分趋势柱状图区域 -->
+    <view class="score-chart-section">
+      <view class="score-chart-header">
+        <text class="score-chart-title">评分趋势</text>
+      </view>
+      
+      <!-- 每日核心追踪 -->
+      <view class="score-chart-item">
+        <view class="score-chart-subtitle">每日核心追踪</view>
+        <view class="chart-container">
+          <view class="chart-bars">
+            <view class="bar-group" wx:for="{{scoreWeekData}}" wx:key="index">
+              <view class="bar-wrapper">
+                <view class="bar bar-score {{item.coreTotal > 0 ? 'bar-score-checked' : ''}}" style="height: {{item.coreHeight}}rpx"></view>
+                <view class="score-value" wx:if="{{item.coreTotal > 0}}">{{item.coreTotal}}</view>
+              </view>
+              <text class="bar-label {{item.coreTotal > 0 ? 'label-checked' : ''}}">{{item.label}}</text>
+            </view>
           </view>
-          <view class="bar-group">
-            <view class="bar" style="height: 70%"></view>
-            <text class="bar-label">周四</text>
+        </view>
+      </view>
+      
+      <!-- 自我深度探索 -->
+      <view class="score-chart-item">
+        <view class="score-chart-subtitle">自我深度探索</view>
+        <view class="chart-container">
+          <view class="chart-bars">
+            <view class="bar-group" wx:for="{{scoreWeekData}}" wx:key="index">
+              <view class="bar-wrapper">
+                <view class="bar bar-score {{item.deepTotal > 0 ? 'bar-score-checked' : ''}}" style="height: {{item.deepHeight}}rpx"></view>
+                <view class="score-value" wx:if="{{item.deepTotal > 0}}">{{item.deepTotal}}</view>
+              </view>
+              <text class="bar-label {{item.deepTotal > 0 ? 'label-checked' : ''}}">{{item.label}}</text>
+            </view>
           </view>
-          <view class="bar-group">
-            <view class="bar" style="height: 90%"></view>
-            <text class="bar-label">周五</text>
-          </view>
-          <view class="bar-group">
-            <view class="bar" style="height: 100%"></view>
-            <text class="bar-label">周六</text>
-          </view>
-          <view class="bar-group">
-            <view class="bar" style="height: 85%"></view>
-            <text class="bar-label">周日</text>
-          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 固定提示文案 -->
+    <view class="score-tip-section">
+      <view class="tip-card">
+        <view class="tip-icon">💡</view>
+        <view class="tip-content">
+          <text class="tip-text">这些评分是您自我觉察的宝贵工具，但不能替代医生的专业诊断哦。定期复查并与您的主治医生沟通至关重要。</text>
         </view>
       </view>
     </view>
@@ -89,34 +148,25 @@
         <button class="btn-text" bindtap="viewAllRecords">查看全部</button>
       </view>
 
-      <view class="record-item" bindtap="viewRecordDetail" data-id="1">
+      <view class="record-item" wx:for="{{testRecords}}" wx:key="_id" bindtap="viewRecordDetail" data-record="{{item}}">
         <view class="record-icon">
-          <text class="icon">🧠</text>
+          <image class="icon-img" src="../../images/{{item.type === 'PHQ-9' ? 'icon-brain.png' : 'icon-heart.png'}}"></image>
         </view>
         <view class="record-content">
-          <text class="record-title">PHQ-9 抑郁筛查</text>
-          <text class="record-desc">轻度抑郁 - 建议关注</text>
-          <text class="record-date">2024年1月15日</text>
+          <text class="record-title">{{item.type}}</text>
+          <text class="record-desc">{{item.severity}}</text>
+          <text class="record-date">{{item.date}}</text>
         </view>
         <view class="record-score">
-          <text class="score">8</text>
+          <text class="score">{{item.score}}</text>
         </view>
       </view>
 
-      <view class="record-item" bindtap="viewRecordDetail" data-id="2">
-        <view class="record-icon">
-          <text class="icon">❤️</text>
-        </view>
-        <view class="record-content">
-          <text class="record-title">GAD-7 焦虑筛查</text>
-          <text class="record-desc">轻度焦虑 - 正常范围</text>
-          <text class="record-date">2024年1月14日</text>
-        </view>
-        <view class="record-score">
-          <text class="score">5</text>
-        </view>
+      <view class="empty-state" wx:if="{{testRecords.length === 0}}">
+        <text class="empty-text">暂无测试记录</text>
       </view>
     </view>
+    </block>
   </view>
 </scroll-view>
 

@@ -1,0 +1,57 @@
+<!--成就徽章页面-->
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 未登录提示 -->
+    <view class="login-prompt" wx:if="{{!hasLogin}}">
+      <view class="prompt-icon">🔒</view>
+      <text class="prompt-title">请先登录</text>
+      <text class="prompt-desc">登录后即可查看您的成就徽章</text>
+      <button class="btn-login" bindtap="goToLogin">前往登录</button>
+    </view>
+
+    <!-- 已登录内容 -->
+    <block wx:if="{{hasLogin}}">
+      <!-- 成就统计 -->
+      <view class="stats-section">
+        <view class="stats-item">
+          <text class="stats-number">{{unlockedCount}}/{{achievements.length}}</text>
+          <text class="stats-label">已获得成就</text>
+        </view>
+        <view class="stats-item">
+          <text class="stats-number">{{consecutiveDays}}</text>
+          <text class="stats-label">连续打卡</text>
+        </view>
+        <view class="stats-item">
+          <text class="stats-number">{{totalCheckins}}</text>
+          <text class="stats-label">总打卡次数</text>
+        </view>
+      </view>
+
+      <!-- 成就列表 -->
+      <view class="achievements-section">
+        <view class="section-title">我的成就</view>
+        <view class="achievements-grid">
+          <view 
+            class="achievement-item {{item.unlocked ? 'achievement-unlocked' : 'achievement-locked'}}"
+            wx:for="{{achievements}}" 
+            wx:key="id"
+          >
+            <view class="achievement-icon">{{item.icon}}</view>
+            <text class="achievement-name">{{item.name}}</text>
+            <text class="achievement-desc">{{item.desc}}</text>
+            <view class="achievement-progress">
+              <view class="progress-bar">
+                <view class="progress-fill" style="width: {{item.current >= item.target ? 100 : (item.current / item.target * 100)}}%"></view>
+              </view>
+              <text class="progress-text">{{item.current}}/{{item.target}}</text>
+            </view>
+            <view class="achievement-badge" wx:if="{{item.unlocked}}">✓</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+

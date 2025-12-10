@@ -1,0 +1,75 @@
+<navigation-bar title="情绪日记" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 装饰性背景 -->
+    <view class="decoration-bg">
+      <view class="bg-circle circle-1"></view>
+      <view class="bg-circle circle-2"></view>
+      <view class="bg-circle circle-3"></view>
+    </view>
+
+    <view class="diary-header">
+      <view class="header-icon">📝</view>
+      <text class="date-text">{{currentDate}}</text>
+      <text class="daily-reminder">{{dailyReminder}}</text>
+    </view>
+
+    <!-- 评分入口 -->
+    <view class="scores-entry-section">
+      <view class="score-entry-card" bindtap="goToScoreAssessment" data-block-type="core">
+        <view class="score-entry-icon">📊</view>
+        <view class="score-entry-content">
+          <text class="score-entry-title">1. 每日核心追踪</text>
+          <text class="score-entry-desc">情绪平稳度、压力感知值、身体放松感等</text>
+          <view class="score-entry-total" wx:if="{{coreTotal > 0}}">
+            <text class="total-label">总分：</text>
+            <text class="total-value">{{coreTotal}}</text>
+          </view>
+          <text class="score-entry-hint" wx:else>点击开始评分</text>
+        </view>
+        <view class="score-entry-arrow">></view>
+      </view>
+
+      <view class="score-entry-card" bindtap="goToScoreAssessment" data-block-type="deep">
+        <view class="score-entry-icon">🔍</view>
+        <view class="score-entry-content">
+          <text class="score-entry-title">2. 自我深度探索</text>
+          <text class="score-entry-desc">饮食滋养度、运动舒畅感、自我关怀度等</text>
+          <view class="score-entry-total" wx:if="{{deepTotal > 0}}">
+            <text class="total-label">总分：</text>
+            <text class="total-value">{{deepTotal}}</text>
+          </view>
+          <text class="score-entry-hint" wx:else>点击开始评分</text>
+        </view>
+        <view class="score-entry-arrow">></view>
+      </view>
+    </view>
+
+    <!-- 文字日记 -->
+    <view class="diary-content">
+      <view class="content-header">
+        <text class="content-title">💭 我的心情日记</text>
+      </view>
+      <textarea 
+        class="diary-input"
+        placeholder="今天发生了什么？你的感受如何？写下你的想法..."
+        value="{{diaryContent}}"
+        bindinput="onDiaryInput"
+        maxlength="1000"
+        show-confirm-bar="{{false}}"
+        placeholder-class="input-placeholder"
+      ></textarea>
+      <view class="char-count">
+        <text class="count-text">{{diaryContent.length}}/1000</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="action-section">
+  <button class="btn-save" bindtap="saveDiary">
+    <text class="btn-icon">✨</text>
+    <text>保存日记</text>
+  </button>
+</view>

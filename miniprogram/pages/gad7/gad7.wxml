@@ -1,0 +1,109 @@
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y scroll-into-view="{{'question-' + currentIndex}}" scroll-with-animation>
+  <view class="container">
+    <!-- 顶部说明 -->
+    <view class="intro-card">
+      <text class="intro-title">过去两周你的状态如何？</text>
+      <text class="intro-desc">选择最符合你的情况即可，没有对错，不需要担心。这只是一个帮助你了解自己的工具。</text>
+    </view>
+
+    <!-- 进度条 -->
+    <view class="progress-section">
+      <view class="progress-info">
+        <text class="progress-text">第 {{currentIndex + 1}} / {{questions.length}} 题</text>
+        <text class="progress-percent">{{Math.round((currentIndex + 1) / questions.length * 100)}}%</text>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{(currentIndex + 1) / questions.length * 100}}%"></view>
+      </view>
+    </view>
+
+    <!-- 题目导航 -->
+    <view class="question-nav">
+      <scroll-view class="nav-scroll" scroll-x>
+        <view class="nav-items">
+          <view 
+            class="nav-item {{currentIndex === index ? 'active' : ''}} {{answers[index] !== null ? 'answered' : ''}}"
+            wx:for="{{questions}}" 
+            wx:for-index="index"
+            wx:key="index"
+            bindtap="goToQuestion"
+            data-index="{{index}}"
+          >
+            {{index + 1}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 问题列表（一次一题模式，当前题目居中） -->
+    <view class="question-list">
+      <block wx:for="{{questions}}" wx:for-item="q" wx:for-index="qIndex" wx:key="index">
+        <view 
+          class="question-card {{currentIndex === qIndex ? 'active' : 'hidden'}}"
+          id="question-{{qIndex}}"
+        >
+          <view class="question-header">
+            <text class="question-number">第 {{qIndex + 1}} 题</text>
+            <text class="question-total">共 {{questions.length}} 题</text>
+          </view>
+          
+          <text class="question-text">{{q.text}}</text>
+
+          <!-- 选项 -->
+          <view class="option-group">
+            <block wx:for="{{options}}" wx:for-item="opt" wx:key="value">
+              <view
+                class="option-item {{answers[qIndex] === opt.value ? 'option-item--active' : ''}}"
+                bindtap="onSelectOption"
+                data-value="{{opt.value}}"
+              >
+                <view class="option-radio">
+                  <view class="radio-dot {{answers[qIndex] === opt.value ? 'radio-dot--active' : ''}}"></view>
+                </view>
+                <view class="option-content">
+                  <text class="option-label">{{opt.label}}</text>
+                  <text class="option-text">{{opt.text}}</text>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 导航按钮 -->
+    <view class="nav-buttons">
+      <button 
+        class="nav-btn prev-btn" 
+        bindtap="goToPrevious"
+        disabled="{{currentIndex === 0}}"
+      >
+        ← 上一题
+      </button>
+      <button 
+        class="nav-btn next-btn" 
+        bindtap="goToNext"
+        disabled="{{currentIndex === questions.length - 1}}"
+      >
+        下一题 →
+      </button>
+    </view>
+
+    <!-- 提交区域 -->
+    <view class="submit-section">
+      <button
+        class="submit-btn"
+        type="primary"
+        bindtap="onSubmit"
+        disabled="{{!canSubmit}}"
+      >
+        {{canSubmit ? '查看结果' : '请先完成所有题目'}}
+      </button>
+      <text class="submit-hint">
+        {{canSubmit ? '已完成所有题目，可以查看结果了' : '还有 ' + remainingCount + ' 题未完成'}}
+      </text>
+    </view>
+  </view>
+</scroll-view>

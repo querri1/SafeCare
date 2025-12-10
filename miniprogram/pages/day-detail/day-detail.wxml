@@ -1,0 +1,82 @@
+<navigation-bar title="当日记录" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 日期标题 -->
+    <view class="date-header">
+      <text class="date-text">{{dateText}}</text>
+    </view>
+
+    <!-- 情绪记录部分 -->
+    <view class="emotion-section">
+      <view class="section-header">
+        <text class="section-icon">💭</text>
+        <text class="section-title">记录的心情</text>
+      </view>
+      
+      <view class="emotion-list" wx:if="{{emotions.length > 0}}">
+        <view class="emotion-item" wx:for="{{emotions}}" wx:key="index">
+          <view class="emotion-content">
+            <text class="emotion-emoji">{{item.emoji}}</text>
+            <view class="emotion-info">
+              <text class="emotion-text">{{item.display}}</text>
+              <text class="emotion-activity">{{item.activityName}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="empty-state" wx:else>
+        <text class="empty-text">{{hasCheckin ? '今天完成了打卡，但还没有记录心情呢～\n记录心情可以帮助你更好地了解自己的状态哦✨' : '未记录心情'}}</text>
+      </view>
+    </view>
+
+    <!-- 情绪调养指南部分 -->
+    <view class="guide-section" wx:if="{{emotionGuide}}">
+      <view class="section-header">
+        <text class="section-icon">🌿</text>
+        <text class="section-title">{{emotionGuide.name}} · 对应{{emotionGuide.organ}}</text>
+      </view>
+      
+      <view class="guide-content">
+        <view class="guide-explanation">
+          <text class="guide-label">情绪解释</text>
+          <text class="guide-text">{{emotionGuide.explanation}}</text>
+        </view>
+        
+        <view class="guide-methods">
+          <text class="guide-label">简单调养方法</text>
+          <view class="method-list">
+            <view class="method-item" wx:for="{{emotionGuide.methods}}" wx:key="index">
+              <text class="method-number">{{index + 1}}.</text>
+              <text class="method-text">{{item}}</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="guide-tip" wx:if="{{emotionGuide.tip}}">
+          <text class="tip-text">{{emotionGuide.tip}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 日记部分 -->
+    <view class="diary-section">
+      <view class="section-header">
+        <text class="section-icon">📝</text>
+        <text class="section-title">日记</text>
+        <button class="btn-edit" wx:if="{{diary}}" bindtap="editDiary">编辑</button>
+        <button class="btn-write" wx:else bindtap="writeDiary">写日记</button>
+      </view>
+
+      <view class="diary-content" wx:if="{{diary && diary.content}}">
+        <text class="diary-text">{{diary.content}}</text>
+      </view>
+
+      <view class="empty-state" wx:else>
+        <text class="empty-text">{{hasCheckin ? '今天还没有写日记呢～\n写日记可以记录下今天的美好时光和感受，让每一天都值得回忆💕' : '未写日记'}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+

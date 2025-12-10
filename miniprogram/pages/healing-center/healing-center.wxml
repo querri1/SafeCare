@@ -1,5 +1,5 @@
 <!--治愈中心页面-->
-<navigation-bar title="治愈中心" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<navigation-bar title="" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
@@ -7,13 +7,13 @@
     <view class="healing-overview">
       <view class="overview-card">
         <view class="card-icon">
-          <text class="icon">🏃</text>
+          <image class="icon-img" src="../../images/icon-shoe.png"></image>
         </view>
         <view class="card-content">
-          <text class="card-title">八段锦练习</text>
-          <text class="card-desc">今日已完成 1/1 次</text>
+          <text class="card-title">健身操练习</text>
+          <text class="card-desc">今日已完成 {{baduanjinProgress}}/1 次</text>
           <view class="progress-bar">
-            <view class="progress-fill" style="width: 100%"></view>
+            <view class="progress-fill" style="width: {{baduanjinProgress * 100}}%"></view>
           </view>
         </view>
         <view class="card-action">
@@ -23,13 +23,13 @@
 
       <view class="overview-card">
         <view class="card-icon">
-          <text class="icon">🎵</text>
+          <image class="icon-img" src="../../images/icon-music.png"></image>
         </view>
         <view class="card-content">
           <text class="card-title">五音疗法</text>
-          <text class="card-desc">今日已完成 0/1 次</text>
+          <text class="card-desc">今日已完成 {{musicProgress}}/1 次</text>
           <view class="progress-bar">
-            <view class="progress-fill" style="width: 0%"></view>
+            <view class="progress-fill" style="width: {{musicProgress * 100}}%"></view>
           </view>
         </view>
         <view class="card-action">
@@ -39,17 +39,19 @@
 
       <view class="overview-card">
         <view class="card-icon">
-          <text class="icon">📋</text>
+          <image class="icon-img" src="../../images/icon-clipboard.png"></image>
         </view>
         <view class="card-content">
           <text class="card-title">心理健康自测</text>
-          <text class="card-desc">本周已完成 2/3 次</text>
+          <text class="card-desc">最近两周已完成 {{twoWeekTestCount}}/{{maxTwoWeekTests}} 次</text>
           <view class="progress-bar">
-            <view class="progress-fill" style="width: 67%"></view>
+            <view class="progress-fill" style="width: {{twoWeekTestCount / maxTwoWeekTests * 100}}%"></view>
           </view>
         </view>
         <view class="card-action">
-          <button class="btn-secondary" bindtap="startTest">开始测试</button>
+          <button class="btn-secondary {{testCompleted ? 'btn-completed' : ''}}" bindtap="startTest">
+            {{testCompleted ? '继续测试' : '开始测试'}}
+          </button>
         </view>
       </view>
     </view>
@@ -58,43 +60,49 @@
     <view class="healing-list">
       <view class="section-title">
         <text class="title">今日治愈</text>
-        <text class="count">4 项治愈</text>
+        <text class="count">{{showPHQ9GAD7 ? '4' : '3'}} 项治愈</text>
       </view>
 
-      <view class="healing-item completed" bindtap="viewExerciseDetail">
+      <view class="healing-item {{baduanjinCompleted ? 'completed' : ''}}" bindtap="{{baduanjinCompleted ? 'viewExerciseDetail' : 'startTodayExercise'}}">
         <view class="healing-icon">
-          <text class="icon">✅</text>
+          <text class="icon" wx:if="{{baduanjinCompleted}}">✅</text>
+          <image class="icon-img" wx:else src="../../images/icon-shoe.png"></image>
         </view>
         <view class="healing-content">
-          <text class="healing-title">八段锦练习</text>
-          <text class="healing-desc">完成一套八段锦动作</text>
+          <text class="healing-title">健身操练习 - {{todayExerciseName}}</text>
+          <text class="healing-desc">今日推荐：{{todayExerciseName}}，也可以选择其他健身操</text>
           <text class="healing-time">预计 15 分钟</text>
         </view>
         <view class="healing-status">
-          <text class="status-badge completed">已完成</text>
+          <text class="status-badge completed" wx:if="{{baduanjinCompleted}}">已完成</text>
+          <button class="btn-start" wx:else bindtap="startTodayExercise">开始练习</button>
         </view>
       </view>
 
-      <view class="healing-item" bindtap="startMusicTherapy">
+      <view class="healing-item {{musicCompleted ? 'completed' : ''}}" bindtap="{{musicCompleted ? 'viewExerciseDetail' : 'startMusicTherapy'}}">
         <view class="healing-icon">
-          <text class="icon">🎵</text>
+          <text class="icon" wx:if="{{musicCompleted}}">✅</text>
+          <image class="icon-img" wx:else src="../../images/icon-music.png"></image>
         </view>
         <view class="healing-content">
-          <text class="healing-title">五音疗法 - 宫音</text>
-          <text class="healing-desc">调节脾胃，舒缓情绪</text>
+          <text class="healing-title">五音疗法</text>
+          <text class="healing-desc">角徵宫商羽，五音守护你</text>
           <text class="healing-time">预计 10 分钟</text>
         </view>
         <view class="healing-status">
-          <button class="btn-start">开始疗愈</button>
+          <text class="status-badge completed" wx:if="{{musicCompleted}}">已完成</text>
+          <button class="btn-start" wx:else bindtap="startMusicTherapy">开始疗愈</button>
         </view>
       </view>
 
-      <view class="healing-item" bindtap="startPHQ9Test">
+      <view class="healing-item" wx:if="{{showPHQ9GAD7}}" bindtap="startTodayTest1">
         <view class="healing-icon">
-          <text class="icon">🧠</text>
+          <image class="icon-img" wx:if="{{todayTest1 === 'PHQ-9'}}" src="../../images/icon-brain.png"></image>
+          <image class="icon-img" wx:elif="{{todayTest1 === 'GAD-7'}}" src="../../images/icon-heart.png"></image>
+          <image class="icon-img" wx:else src="../../images/icon-brain.png"></image>
         </view>
         <view class="healing-content">
-          <text class="healing-title">PHQ-9 抑郁筛查</text>
+          <text class="healing-title">{{todayTest1Name}}</text>
           <text class="healing-desc">评估过去两周的情绪状态</text>
           <text class="healing-time">预计 5 分钟</text>
         </view>
@@ -103,17 +111,30 @@
         </view>
       </view>
 
-      <view class="healing-item" bindtap="startGAD7Test">
+      <view class="healing-item" bindtap="startSASTest">
         <view class="healing-icon">
-          <text class="icon">❤️</text>
+          <image class="icon-img" src="../../images/icon-brain.png"></image>
         </view>
         <view class="healing-content">
-          <text class="healing-title">GAD-7 焦虑筛查</text>
-          <text class="healing-desc">评估过去两周的焦虑程度</text>
+          <text class="healing-title">焦虑自评量表 SAS</text>
+          <text class="healing-desc">评估过去两周的情绪状态</text>
           <text class="healing-time">预计 5 分钟</text>
         </view>
         <view class="healing-status">
           <button class="btn-start">开始测试</button>
+        </view>
+      </view>
+
+      <view class="healing-item" bindtap="openEmotionDiary">
+        <view class="healing-icon">
+          <text class="icon">📝</text>
+        </view>
+        <view class="healing-content">
+          <text class="healing-title">情绪日记</text>
+          <text class="healing-desc">{{diaryHint}}</text>
+        </view>
+        <view class="healing-status">
+          <button class="btn-start">写日记</button>
         </view>
       </view>
     </view>

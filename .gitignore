@@ -12,3 +12,19 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+
+# node_modules
+node_modules
+.env
+.env.local
+.env.development
+.env.test.local
+.env.production.local
+
+#miniprogram_npm
+miniprogram_npm
+dist
+.DS_Store
+.idea
+.vscode
+.wxml

@@ -6,7 +6,7 @@
 
 ### 治愈中心
 - 八段锦练习
-- 五音疗法
+- 五音疗法（可选择宫商角徵羽）
 - 心理健康自测
 - PHQ-9 抑郁筛查
 - GAD-7 焦虑筛查
@@ -32,14 +32,15 @@
 ```
 miniprogram/
 ├── app.json          # 小程序配置
-├── app.ts            # 小程序入口
-├── app.scss          # 全局样式
+├── app.js            # 小程序入口
+├── app.wxss          # 全局样式
 ├── components/       # 组件目录
 │   └── navigation-bar/  # 导航栏组件
 ├── pages/            # 页面目录
 │   ├── healing-center/  # 治愈中心页面
 │   ├── data-center/     # 数据中心页面
-│   └── profile/         # 个人中心页面
+│   ├── profile/         # 个人中心页面
+│   └── music-therapy/   # 五音疗法选择页面
 ├── images/           # 图片资源
 └── utils/            # 工具函数
 ```
@@ -47,8 +48,8 @@ miniprogram/
 ## 技术栈
 
 - 微信小程序原生开发
-- TypeScript
-- SCSS
+- JavaScript
+- WXSS
 - 自定义组件
 
 ## 开发说明
@@ -63,6 +64,11 @@ miniprogram/
 - 展示今日治愈概览
 - 提供各种治愈活动入口
 - 显示完成状态和进度
+
+### 五音疗法 (music-therapy)
+- 提供宫商角徵羽五种音律选择
+- 每种音律对应不同脏腑功能
+- 包含使用说明和疗愈记录
 
 ### 数据中心 (data-center)
 - 展示用户数据统计
@@ -96,4 +102,5 @@ miniprogram/
 - ✅ 更新导航栏组件为简化版本
 - ✅ 删除不需要的TypeScript和SCSS文件
 - ✅ 修复tabBar图标文件缺失问题（使用文字图标）
+- ✅ 新增五音疗法选择页面，支持宫商角徵羽五种音律选择
 

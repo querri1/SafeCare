@@ -1,0 +1,98 @@
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 时间筛选 -->
+    <view class="filter-section">
+      <view class="filter-card">
+        <view class="filter-header">
+          <text class="filter-title">时间筛选</text>
+          <text class="filter-count">共 {{totalCount}} 条记录</text>
+        </view>
+        <view class="filter-buttons">
+          <button 
+            class="filter-btn {{timeRange === '7days' ? 'active' : ''}}" 
+            bindtap="switchTimeRange" 
+            data-range="7days"
+          >
+            近7天
+          </button>
+          <button 
+            class="filter-btn {{timeRange === '30days' ? 'active' : ''}}" 
+            bindtap="switchTimeRange" 
+            data-range="30days"
+          >
+            近30天
+          </button>
+          <button 
+            class="filter-btn {{timeRange === 'all' ? 'active' : ''}}" 
+            bindtap="switchTimeRange" 
+            data-range="all"
+          >
+            全部
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 记录列表 -->
+    <view class="records-section" wx:if="{{groupedRecords.length > 0}}">
+      <view class="date-group" wx:for="{{groupedRecords}}" wx:key="date">
+        <view class="date-header">
+          <text class="date-icon">📅</text>
+          <text class="date-text">{{item.date}}</text>
+          <text class="date-count">{{item.records.length}} 条</text>
+        </view>
+        
+        <view class="records-list">
+          <view 
+            class="record-card" 
+            wx:for="{{item.records}}" 
+            wx:key="_id"
+            wx:for-item="record"
+            bindtap="viewRecordDetail"
+            data-record="{{record}}"
+          >
+            <view class="record-icon-wrapper">
+              <view class="record-icon {{record.type === 'PHQ-9' ? 'phq9' : 'gad7'}}">
+                <image 
+                  class="icon-img" 
+                  src="../../images/{{record.type === 'PHQ-9' ? 'icon-brain.png' : 'icon-heart.png'}}"
+                ></image>
+              </view>
+            </view>
+            
+            <view class="record-content">
+              <view class="record-header">
+                <text class="record-type">{{record.typeName}}</text>
+                <view class="record-score-badge">
+                  <text class="score-label">得分</text>
+                  <text class="score-value">{{record.score}}</text>
+                </view>
+              </view>
+              
+              <text class="record-severity">{{record.severity}}</text>
+              
+              <view class="record-time">
+                <text class="time-icon">🕐</text>
+                <text class="time-text">{{record.time}}</text>
+              </view>
+            </view>
+            
+            <view class="record-arrow">
+              <text class="arrow">›</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:else>
+      <view class="empty-icon">📋</view>
+      <text class="empty-title">暂无测试记录</text>
+      <text class="empty-desc">完成心理健康测试后，记录会显示在这里</text>
+    </view>
+  </view>
+</scroll-view>
+

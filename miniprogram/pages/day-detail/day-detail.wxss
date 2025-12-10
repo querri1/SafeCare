@@ -1,0 +1,233 @@
+/* 日期详情页面样式 */
+.scrollarea {
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.container {
+  padding: 40rpx 30rpx;
+  padding-bottom: 60rpx;
+}
+
+/* 日期标题 */
+.date-header {
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+
+.date-text {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #1f2937;
+  background: linear-gradient(135deg, #34D399, #A3E635);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 情绪记录部分 */
+.emotion-section {
+  background: white;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #f0fdf4;
+}
+
+.section-icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+  flex: 1;
+}
+
+.btn-edit,
+.btn-write {
+  background: linear-gradient(135deg, #34D399, #A3E635);
+  color: white;
+  border: none;
+  border-radius: 8rpx;
+  padding: 12rpx 24rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.btn-edit:active,
+.btn-write:active {
+  opacity: 0.8;
+}
+
+.emotion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.emotion-item {
+  padding: 20rpx;
+  background: #f9fafb;
+  border-radius: 16rpx;
+  border-left: 4rpx solid #34D399;
+}
+
+.emotion-content {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.emotion-emoji {
+  font-size: 48rpx;
+  line-height: 1;
+}
+
+.emotion-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.emotion-text {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.emotion-activity {
+  font-size: 24rpx;
+  color: #6b7280;
+}
+
+/* 情绪调养指南部分 */
+.guide-section {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(52, 211, 153, 0.15);
+  border: 2rpx solid rgba(52, 211, 153, 0.1);
+}
+
+.guide-content {
+  margin-top: 20rpx;
+}
+
+.guide-explanation {
+  margin-bottom: 32rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 1rpx solid #e5e7eb;
+}
+
+.guide-label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #34D399;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.guide-text {
+  font-size: 28rpx;
+  line-height: 1.8;
+  color: #374151;
+  display: block;
+}
+
+.guide-methods {
+  margin-top: 24rpx;
+}
+
+.method-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.method-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.method-number {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #34D399;
+  line-height: 1.8;
+  flex-shrink: 0;
+  min-width: 40rpx;
+}
+
+.method-text {
+  font-size: 28rpx;
+  line-height: 1.8;
+  color: #4b5563;
+  flex: 1;
+}
+
+.guide-tip {
+  margin-top: 32rpx;
+  padding: 24rpx;
+  background: linear-gradient(135deg, rgba(163, 230, 53, 0.1), rgba(52, 211, 153, 0.1));
+  border-radius: 16rpx;
+  border-left: 4rpx solid #34D399;
+}
+
+.tip-text {
+  font-size: 26rpx;
+  line-height: 1.8;
+  color: #374151;
+  display: block;
+}
+
+/* 日记部分 */
+.diary-section {
+  background: white;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  min-height: 400rpx;
+}
+
+.diary-content {
+  margin-top: 20rpx;
+}
+
+.diary-text {
+  font-size: 30rpx;
+  line-height: 2;
+  color: #1f2937;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* 空状态 */
+.empty-state {
+  padding: 60rpx 20rpx;
+  text-align: center;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #6b7280;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+

@@ -1,0 +1,60 @@
+<navigation-bar title="{{blockName}}" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 装饰性背景 -->
+    <view class="decoration-bg">
+      <view class="bg-circle circle-1"></view>
+      <view class="bg-circle circle-2"></view>
+    </view>
+
+    <view class="header-section">
+      <view class="header-icon">📊</view>
+      <text class="date-text">{{currentDate}}</text>
+      <text class="daily-reminder">{{dailyReminder}}</text>
+    </view>
+
+    <!-- 评分表 -->
+    <view class="scores-section">
+      <view class="score-block">
+        <view class="score-block-header">
+          <text class="score-block-title">{{blockName}}</text>
+          <view class="score-total">
+            <text class="total-label">总分：</text>
+            <text class="total-value">{{total}}</text>
+          </view>
+        </view>
+        <view class="score-items">
+          <view class="score-item" wx:for="{{dimensions}}" wx:key="key">
+            <view class="score-item-header">
+              <text class="score-name">{{item.name}}</text>
+              <text class="score-hint">{{item.hint}}</text>
+            </view>
+            <view class="score-buttons">
+              <view 
+                class="score-btn {{scores[item.key] === index ? 'active' : ''}}"
+                wx:for="{{[0,1,2,3,4,5]}}" 
+                wx:for-item="score"
+                wx:for-index="index"
+                wx:key="index"
+                data-key="{{item.key}}"
+                data-score="{{index}}"
+                bindtap="selectScore"
+              >
+                {{index}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="action-section">
+  <button class="btn-save" bindtap="saveScores">
+    <text class="btn-icon">✨</text>
+    <text>保存评分</text>
+  </button>
+</view>
+

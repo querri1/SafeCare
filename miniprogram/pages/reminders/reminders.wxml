@@ -1,0 +1,63 @@
+<!--提醒设置页面-->
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 健身操提醒 -->
+    <view class="reminder-section">
+      <view class="reminder-header">
+        <view class="reminder-info">
+          <text class="reminder-title">健身操练习提醒</text>
+          <text class="reminder-desc">每天提醒您进行健身操练习</text>
+        </view>
+        <switch checked="{{baduanjinReminder}}" bindchange="toggleBaduanjinReminder" color="#34D399"/>
+      </view>
+      <view class="reminder-time" wx:if="{{baduanjinReminder}}">
+        <text class="time-label">提醒时间</text>
+        <picker mode="time" value="{{baduanjinTime}}" bindchange="selectBaduanjinTime">
+          <view class="time-picker">{{baduanjinTime}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 五音疗法提醒 -->
+    <view class="reminder-section">
+      <view class="reminder-header">
+        <view class="reminder-info">
+          <text class="reminder-title">五音疗法提醒</text>
+          <text class="reminder-desc">每天提醒您进行五音疗法</text>
+        </view>
+        <switch checked="{{musicReminder}}" bindchange="toggleMusicReminder" color="#34D399"/>
+      </view>
+      <view class="reminder-time" wx:if="{{musicReminder}}">
+        <text class="time-label">提醒时间</text>
+        <picker mode="time" value="{{musicTime}}" bindchange="selectMusicTime">
+          <view class="time-picker">{{musicTime}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 测试提醒 -->
+    <view class="reminder-section">
+      <view class="reminder-header">
+        <view class="reminder-info">
+          <text class="reminder-title">心理健康测试提醒</text>
+          <text class="reminder-desc">每周提醒您进行心理健康测试</text>
+        </view>
+        <switch checked="{{testReminder}}" bindchange="toggleTestReminder" color="#34D399"/>
+      </view>
+      <view class="reminder-time" wx:if="{{testReminder}}">
+        <text class="time-label">提醒时间</text>
+        <picker mode="time" value="{{testTime}}" bindchange="selectTestTime">
+          <view class="time-picker">{{testTime}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 提示信息 -->
+    <view class="tip-section">
+      <text class="tip-text">💡 提示：开启提醒后，系统会在指定时间提醒您进行相应的活动</text>
+    </view>
+  </view>
+</scroll-view>
+

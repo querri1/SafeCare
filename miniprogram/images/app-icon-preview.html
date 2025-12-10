@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安心宝小程序图标预览 - Ins风格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #FDE047 0%, #A3E635 50%, #34D399 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #34D399;
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+        
+        .icon-preview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .icon-label {
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .icon-wrapper {
+            background: #f9fafb;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon-wrapper.dark {
+            background: #1f2937;
+        }
+        
+        .icon-wrapper.gradient {
+            background: linear-gradient(135deg, #FDE047 0%, #A3E635 50%, #34D399 100%);
+        }
+        
+        .icon-wrapper.white {
+            background: white;
+        }
+        
+        svg {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+        }
+        
+        .info-section {
+            margin-top: 50px;
+            padding: 30px;
+            background: #f9fafb;
+            border-radius: 16px;
+        }
+        
+        .info-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+        
+        .info-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .info-item {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.6;
+            padding-left: 24px;
+            position: relative;
+        }
+        
+        .info-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #34D399;
+            font-size: 20px;
+            line-height: 1;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 16px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .color-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-name {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        .color-code {
+            font-size: 11px;
+            color: #9ca3af;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>安心宝小程序图标</h1>
+        <p class="subtitle">以"藥"字为框架 · 融入音乐与健身元素 · Ins风格设计</p>
+        
+        <div class="icon-preview">
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <div class="icon-wrapper white">
+                        <img src="app-icon.svg" alt="App Icon" />
+                    </div>
+                    <span class="icon-label">白色背景</span>
+                </div>
+                
+                <div class="icon-item">
+                    <div class="icon-wrapper gradient">
+                        <img src="app-icon.svg" alt="App Icon" />
+                    </div>
+                    <span class="icon-label">渐变背景</span>
+                </div>
+                
+                <div class="icon-item">
+                    <div class="icon-wrapper dark">
+                        <img src="app-icon.svg" alt="App Icon" />
+                    </div>
+                    <span class="icon-label">深色背景</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h2 class="info-title">设计说明</h2>
+            <ul class="info-list">
+                <li class="info-item">
+                    <strong>设计框架：</strong>以繁体字"藥"为整体结构，保持字形可识别性
+                </li>
+                <li class="info-item">
+                    <strong>音乐元素：</strong>融入丝竹管弦元素（古筝弦线、竹笛音孔、音符符号）
+                </li>
+                <li class="info-item">
+                    <strong>健身元素：</strong>笔画变形为运动轨迹和动作关键点，体现健身操特点
+                </li>
+                <li class="info-item">
+                    <strong>配色方案：</strong>黄绿渐变（#FDE047 → #A3E635 → #34D399），温暖富有生命力
+                </li>
+                <li class="info-item">
+                    <strong>设计风格：</strong>Instagram风格，简洁现代，圆角矩形背景、渐变填充、高光效果
+                </li>
+                <li class="info-item">
+                    <strong>主题融合：</strong>将"藥"（治愈）、音乐疗法、健身操三大主题完美融合
+                </li>
+                <li class="info-item">
+                    <strong>适用场景：</strong>小程序图标、应用商店图标、品牌标识
+                </li>
+            </ul>
+            
+            <div class="color-palette">
+                <div class="color-item">
+                    <div class="color-box" style="background: #FDE047;"></div>
+                    <span class="color-name">黄色</span>
+                    <span class="color-code">#FDE047</span>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: #A3E635;"></div>
+                    <span class="color-name">黄绿色</span>
+                    <span class="color-code">#A3E635</span>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: #34D399;"></div>
+                    <span class="color-name">绿色</span>
+                    <span class="color-code">#34D399</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

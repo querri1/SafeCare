@@ -1,0 +1,451 @@
+/* 五音疗法选择页面样式 */
+.scrollarea {
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.container {
+  padding: 20rpx;
+}
+
+/* 页面介绍 */
+.intro-section {
+  margin-bottom: 40rpx;
+}
+
+.intro-card {
+  background: linear-gradient(135deg, #34D399, #A3E635);
+  border-radius: 16rpx;
+  padding: 40rpx;
+  text-align: center;
+  color: white;
+}
+
+.intro-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.intro-desc {
+  font-size: 28rpx;
+  opacity: 0.9;
+  line-height: 1.6;
+  display: block;
+}
+
+/* 五音选择 */
+.music-selection {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  margin-bottom: 30rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1f2937;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: #6b7280;
+  display: block;
+}
+
+.music-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.music-item {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.music-item:active {
+  transform: scale(0.98);
+}
+
+.music-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+}
+
+.music-icon .icon-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.music-icon .icon {
+  font-size: 36rpx;
+}
+
+/* 不同音律的颜色 */
+.music-icon.gong {
+  background: #FFD700; /* 金黄色 */
+}
+
+.music-icon.shang {
+  background: #FFFFFF; /* 白色 */
+}
+
+.music-icon.jue {
+  background: linear-gradient(135deg, #84CC16, #65A30D);
+}
+
+.music-icon.zhi {
+  background: linear-gradient(135deg, #EF4444, #DC2626);
+}
+
+.music-icon.yu {
+  background: #000000; /* 黑色 */
+}
+
+.music-content {
+  flex: 1;
+}
+
+.music-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.music-desc {
+  font-size: 24rpx;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.music-effect {
+  font-size: 22rpx;
+  color: #9ca3af;
+  display: block;
+}
+
+.music-arrow {
+  margin-left: 20rpx;
+}
+
+.arrow {
+  font-size: 24rpx;
+  color: #9ca3af;
+}
+
+/* 使用说明 */
+.usage-guide {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.guide-title {
+  margin-bottom: 24rpx;
+}
+
+.guide-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.guide-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+}
+
+.guide-number {
+  width: 32rpx;
+  height: 32rpx;
+  background: #34D399;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20rpx;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.guide-text {
+  font-size: 26rpx;
+  color: #374151;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* 播放器区域 */
+.player-section {
+  margin-bottom: 40rpx;
+}
+
+.player-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.player-label {
+  font-size: 22rpx;
+  color: #9ca3af;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.player-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.player-status-text {
+  font-size: 24rpx;
+  color: #34D399;
+}
+
+.player-progress {
+  margin-bottom: 24rpx;
+}
+
+.player-progress-bar {
+  width: 100%;
+  height: 8rpx;
+  background-color: #e5e7eb;
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.player-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #34D399, #A3E635);
+  border-radius: 4rpx;
+}
+
+.player-time-row {
+  margin-top: 8rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.player-time {
+  font-size: 22rpx;
+  color: #9ca3af;
+}
+
+.player-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 8rpx;
+}
+
+.player-btn {
+  flex: 1;
+  font-size: 26rpx;
+  border-radius: 999rpx;
+  padding: 16rpx 0;
+}
+
+.player-btn.main {
+  background: linear-gradient(135deg, #34D399, #A3E635);
+  color: white;
+  border: none;
+}
+
+.player-btn.secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: none;
+}
+
+/* 加载提示 */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-content {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 16rpx;
+  padding: 60rpx 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  color: white;
+  font-size: 28rpx;
+}
+
+/* 播放列表区域 */
+.playlist-section {
+  margin-bottom: 40rpx;
+}
+
+.playlist-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.playlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.playlist-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.playlist-count {
+  font-size: 24rpx;
+  color: #9ca3af;
+}
+
+.playlist-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.playlist-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.playlist-item:active {
+  transform: scale(0.98);
+  background: #f3f4f6;
+}
+
+.playlist-item.active {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.1), rgba(163, 230, 53, 0.1));
+  border: 2rpx solid #34D399;
+}
+
+.playlist-item-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.playlist-item.active .playlist-item-icon {
+  background: linear-gradient(135deg, #34D399, #A3E635);
+}
+
+.playlist-item-number {
+  font-size: 24rpx;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.playlist-item.active .playlist-item-number {
+  color: white;
+}
+
+.playlist-item-playing {
+  font-size: 28rpx;
+  color: white;
+  font-weight: bold;
+}
+
+.playlist-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.playlist-item-name {
+  font-size: 28rpx;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.playlist-item.active .playlist-item-name {
+  color: #34D399;
+  font-weight: 600;
+}
+
+.playlist-item-status {
+  font-size: 22rpx;
+  color: #34D399;
+}
+
+.playlist-item-arrow {
+  margin-left: 16rpx;
+}
+
+.playlist-item-arrow .arrow {
+  font-size: 20rpx;
+  color: #34D399;
+}

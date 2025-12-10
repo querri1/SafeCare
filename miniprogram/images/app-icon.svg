@@ -1,0 +1,162 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 黄绿渐变背景 -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FDE047;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A3E635;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34D399;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 内部高光 -->
+    <radialGradient id="highlight" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- 文字渐变 -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0FDF4;stop-opacity:0.98" />
+    </linearGradient>
+    
+    <!-- 阴影 -->
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="3" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.25"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 背景：ins风格圆角矩形 -->
+  <rect width="512" height="512" rx="110" ry="110" fill="url(#bgGradient)"/>
+  
+  <!-- 高光层 -->
+  <rect width="512" height="512" rx="110" ry="110" fill="url(#highlight)"/>
+  
+  <!-- "藥"字主体框架 -->
+  <g transform="translate(256, 256)" filter="url(#shadow)">
+    
+    <!-- 草字头（变形为音符） -->
+    <g transform="translate(-100, -120)">
+      <!-- 左侧音符 -->
+      <g transform="translate(0, 0)">
+        <line x1="0" y1="0" x2="12" y2="0" stroke="url(#textGradient)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M 6,0 L 6,-18 L 10,-13 L 6,-8 Z" fill="url(#textGradient)"/>
+      </g>
+      <!-- 右侧高音符号 -->
+      <g transform="translate(30, 0)">
+        <path d="M 0,0 Q 4,-3 0,-6 Q -4,-9 0,-12 Q 4,-15 0,-18" 
+              fill="none" stroke="url(#textGradient)" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+    </g>
+    
+    <!-- "藥"字主体："樂"部分 -->
+    <!-- 上部横线（变形为古筝弦） -->
+    <g transform="translate(-80, -80)">
+      <line x1="0" y1="0" x2="160" y2="0" stroke="url(#textGradient)" stroke-width="6" stroke-linecap="round"/>
+      <line x1="0" y1="10" x2="160" y2="10" stroke="url(#textGradient)" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+      <line x1="0" y1="20" x2="160" y2="20" stroke="url(#textGradient)" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+    </g>
+    
+    <!-- 中间竖线（变形为竹笛，带音孔） -->
+    <line x1="0" y1="-80" x2="0" y2="100" 
+          stroke="url(#textGradient)" stroke-width="7" stroke-linecap="round"/>
+    <!-- 竹笛音孔 -->
+    <circle cx="0" cy="-50" r="5" fill="url(#textGradient)"/>
+    <circle cx="0" cy="-20" r="5" fill="url(#textGradient)"/>
+    <circle cx="0" cy="10" r="5" fill="url(#textGradient)"/>
+    <circle cx="0" cy="40" r="5" fill="url(#textGradient)"/>
+    <circle cx="0" cy="70" r="5" fill="url(#textGradient)"/>
+    
+    <!-- 右侧竖线（变形为健身操动作轨迹） -->
+    <g transform="translate(80, -80)">
+      <path d="M 0,0 
+               Q 12,15 0,30 
+               Q -12,45 0,60 
+               Q 12,75 0,90 
+               Q -12,105 0,120" 
+            fill="none" 
+            stroke="url(#textGradient)" 
+            stroke-width="6" 
+            stroke-linecap="round"/>
+      <!-- 动作关键点 -->
+      <circle cx="0" cy="0" r="6" fill="url(#textGradient)"/>
+      <circle cx="0" cy="30" r="6" fill="url(#textGradient)"/>
+      <circle cx="0" cy="60" r="6" fill="url(#textGradient)"/>
+      <circle cx="0" cy="90" r="6" fill="url(#textGradient)"/>
+    </g>
+    
+    <!-- 底部结构（"藥"字底部，变形为运动线条） -->
+    <g transform="translate(-60, 80)">
+      <path d="M 0,0 
+               Q 15,8 30,0 
+               Q 45,-8 60,0 
+               Q 75,8 90,0 
+               Q 105,-8 120,0" 
+            fill="none" 
+            stroke="url(#textGradient)" 
+            stroke-width="6" 
+            stroke-linecap="round"/>
+      <!-- 运动点 -->
+      <circle cx="30" cy="4" r="5" fill="url(#textGradient)"/>
+      <circle cx="60" cy="-4" r="5" fill="url(#textGradient)"/>
+      <circle cx="90" cy="4" r="5" fill="url(#textGradient)"/>
+    </g>
+    
+    <!-- 左侧装饰：丝竹管弦（古筝弦线） -->
+    <g transform="translate(-120, -40)">
+      <line x1="0" y1="0" x2="0" y2="80" stroke="url(#textGradient)" stroke-width="2.5" opacity="0.6"/>
+      <line x1="8" y1="0" x2="8" y2="80" stroke="url(#textGradient)" stroke-width="2.5" opacity="0.6"/>
+      <line x1="16" y1="0" x2="16" y2="80" stroke="url(#textGradient)" stroke-width="2.5" opacity="0.6"/>
+      <!-- 音符装饰 -->
+      <g transform="translate(12, 30)">
+        <circle cx="0" cy="0" r="4" fill="url(#textGradient)" opacity="0.7"/>
+        <line x1="0" y1="0" x2="0" y2="-12" stroke="url(#textGradient)" stroke-width="2" opacity="0.7"/>
+      </g>
+    </g>
+    
+    <!-- 右侧装饰：健身操动作（运动轨迹） -->
+    <g transform="translate(120, -40)">
+      <path d="M 0,0 
+               L 8,12 
+               L 0,24 
+               L -8,36 
+               L 0,48 
+               L 8,60 
+               L 0,72 
+               L -8,80" 
+            fill="none" 
+            stroke="url(#textGradient)" 
+            stroke-width="3" 
+            stroke-linecap="round" 
+            opacity="0.6"/>
+      <!-- 动作关键点 -->
+      <circle cx="0" cy="0" r="4" fill="url(#textGradient)" opacity="0.7"/>
+      <circle cx="0" cy="24" r="4" fill="url(#textGradient)" opacity="0.7"/>
+      <circle cx="0" cy="48" r="4" fill="url(#textGradient)" opacity="0.7"/>
+      <circle cx="0" cy="72" r="4" fill="url(#textGradient)" opacity="0.7"/>
+    </g>
+    
+    <!-- 中心融合元素：音符+运动 -->
+    <g transform="translate(0, 10)" opacity="0.5">
+      <!-- 中心音符 -->
+      <path d="M -12,0 L -12,-12 L -8,-8 L -4,-12 L -4,0 Z" fill="url(#textGradient)"/>
+      <!-- 运动轨迹圆 -->
+      <circle cx="0" cy="0" r="20" fill="none" 
+              stroke="url(#textGradient)" stroke-width="2" stroke-dasharray="4,4"/>
+    </g>
+    
+  </g>
+  
+  <!-- ins风格装饰点 -->
+  <circle cx="100" cy="100" r="10" fill="white" opacity="0.4"/>
+  <circle cx="412" cy="100" r="10" fill="white" opacity="0.4"/>
+  <circle cx="100" cy="412" r="10" fill="white" opacity="0.3"/>
+  <circle cx="412" cy="412" r="10" fill="white" opacity="0.3"/>
+</svg>

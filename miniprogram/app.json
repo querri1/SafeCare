@@ -2,45 +2,57 @@
   "pages": [
     "pages/healing-center/healing-center",
     "pages/data-center/data-center",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/music-therapy/music-therapy",
+    "pages/baduanjin/baduanjin",
+    "pages/phq9/phq9",
+    "pages/gad7/gad7",
+    "pages/sas/sas",
+    "pages/sas-result/sas-result",
+    "pages/my-data/my-data",
+    "pages/checkin-calendar/checkin-calendar",
+    "pages/reminders/reminders",
+    "pages/privacy/privacy",
+    "pages/help/help",
+    "pages/achievements/achievements",
+    "pages/test-records/test-records",
+    "pages/emotion-selector/emotion-selector",
+    "pages/emotion-diary/emotion-diary",
+    "pages/day-detail/day-detail",
+    "pages/score-assessment/score-assessment"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom",
     "backgroundColor": "#f5f5f5"
   },
-  "tabBar": {
-    "color": "#999999",
-    "selectedColor": "#6366F1",
-    "backgroundColor": "#ffffff",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "pages/healing-center/healing-center",
-        "text": "治愈中心"
-      },
-      {
-        "pagePath": "pages/data-center/data-center",
-        "text": "数据中心"
-      },
-      {
-        "pagePath": "pages/profile/profile",
-        "text": "个人中心"
-      }
-    ]
-  },
-  "style": "v2",
-  "rendererOptions": {
-    "skyline": {
-      "defaultDisplayBlock": true,
-      "defaultContentBox": true,
-      "tagNameStyleIsolation": "legacy",
-      "disableABTest": true,
-      "sdkVersionBegin": "3.0.0",
-      "sdkVersionEnd": "15.255.255"
-    }
-  },
-  "componentFramework": "glass-easel",
-  "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+
+    "tabBar": {
+      "color": "#999999",
+      "selectedColor": "#34D399",
+      "backgroundColor": "#ffffff",
+      "borderStyle": "black",
+      "list": [
+        {
+          "pagePath": "pages/healing-center/healing-center",
+          "text": "治愈中心",
+          "iconPath": "images/healing-center.png",
+          "selectedIconPath": "images/healing-center-active.png"
+        },
+        {
+          "pagePath": "pages/data-center/data-center",
+          "text": "数据中心",
+          "iconPath": "images/data-center.png",
+          "selectedIconPath": "images/data-center-active.png"
+        },
+        {
+          "pagePath": "pages/profile/profile",
+          "text": "个人中心",
+          "iconPath": "images/profile.png",
+          "selectedIconPath": "images/profile-active.png"
+        }
+      ]
+    },
+  "sitemapLocation": "sitemap.json"
+  
 }

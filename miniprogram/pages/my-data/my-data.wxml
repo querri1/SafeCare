@@ -1,0 +1,88 @@
+<!--我的数据页面-->
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 未登录提示 -->
+    <view class="login-prompt" wx:if="{{!hasLogin}}">
+      <view class="prompt-icon">🔒</view>
+      <text class="prompt-title">请先登录</text>
+      <text class="prompt-desc">登录后即可查看您的详细数据</text>
+      <button class="btn-login" bindtap="goToLogin">前往登录</button>
+    </view>
+
+    <!-- 已登录内容 -->
+    <block wx:if="{{hasLogin}}">
+      <!-- 总体统计 -->
+      <view class="stats-section">
+        <view class="section-title">总体统计</view>
+        <view class="stats-grid">
+          <view class="stat-card">
+            <text class="stat-number">{{totalCheckins}}</text>
+            <text class="stat-label">总打卡次数</text>
+          </view>
+          <view class="stat-card">
+            <text class="stat-number">{{consecutiveDays}}</text>
+            <text class="stat-label">连续打卡</text>
+          </view>
+          <view class="stat-card">
+            <text class="stat-number">{{totalTests}}</text>
+            <text class="stat-label">总测试次数</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 活动统计 -->
+      <view class="stats-section">
+        <view class="section-title">活动统计</view>
+        <view class="activity-list">
+          <view class="activity-item">
+            <view class="activity-icon">🧘</view>
+            <view class="activity-content">
+              <text class="activity-name">健身操练习</text>
+              <text class="activity-count">完成 {{totalBaduanjin}} 次</text>
+            </view>
+          </view>
+          <view class="activity-item">
+            <view class="activity-icon">🎵</view>
+            <view class="activity-content">
+              <text class="activity-name">五音疗法</text>
+              <text class="activity-count">完成 {{totalMusic}} 次</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 本周统计 -->
+      <view class="stats-section">
+        <view class="section-title">本周统计</view>
+        <view class="week-stats">
+          <view class="week-item">
+            <text class="week-label">本周打卡</text>
+            <text class="week-value">{{weekCheckins}} 次</text>
+          </view>
+          <view class="week-item">
+            <text class="week-label">本周测试</text>
+            <text class="week-value">{{weekTests}} 次</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 本月统计 -->
+      <view class="stats-section">
+        <view class="section-title">本月统计</view>
+        <view class="month-stats">
+          <view class="month-item">
+            <text class="month-label">本月打卡</text>
+            <text class="month-value">{{monthCheckins}} 次</text>
+          </view>
+          <view class="month-item">
+            <text class="month-label">本月测试</text>
+            <text class="month-value">{{monthTests}} 次</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+

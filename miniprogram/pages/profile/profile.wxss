@@ -6,6 +6,7 @@
 
 .container {
   padding: 20rpx;
+  padding-top: 40rpx;
 }
 
 /* 用户信息 */
@@ -19,12 +20,16 @@
   box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
 }
 
+.avatar-wrapper {
+  position: relative;
+  margin-right: 30rpx;
+}
+
 .avatar {
   width: 120rpx;
   height: 120rpx;
   border-radius: 60rpx;
   overflow: hidden;
-  margin-right: 30rpx;
 }
 
 .avatar image {
@@ -32,8 +37,30 @@
   height: 100%;
 }
 
+.avatar-edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 36rpx;
+  height: 36rpx;
+  background: #34D399;
+  border-radius: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20rpx;
+  border: 2rpx solid white;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+}
+
 .user-info {
   flex: 1;
+}
+
+.user-name-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
 }
 
 .user-name {
@@ -41,7 +68,34 @@
   font-weight: 600;
   color: #1f2937;
   display: block;
+}
+
+.edit-nickname-btn {
+  margin-left: 16rpx;
+  font-size: 28rpx;
+  color: #34D399;
+  padding: 8rpx;
+  cursor: pointer;
+}
+
+.user-age-wrapper {
+  display: flex;
+  align-items: center;
   margin-bottom: 8rpx;
+}
+
+.user-age {
+  font-size: 28rpx;
+  color: #6b7280;
+  display: block;
+}
+
+.edit-age-btn {
+  margin-left: 16rpx;
+  font-size: 24rpx;
+  color: #34D399;
+  padding: 8rpx;
+  cursor: pointer;
 }
 
 .user-title {
@@ -63,7 +117,7 @@
 .stat-number {
   font-size: 32rpx;
   font-weight: 700;
-  color: #6366F1;
+  color: #34D399;
   display: block;
   margin-bottom: 4rpx;
 }
@@ -108,6 +162,11 @@
   align-items: center;
   justify-content: center;
   margin-right: 20rpx;
+}
+
+.menu-icon .icon-img {
+  width: 32rpx;
+  height: 32rpx;
 }
 
 .menu-icon .icon {

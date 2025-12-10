@@ -1,0 +1,69 @@
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y>
+  <view class="container">
+    <!-- 结果卡片 -->
+    <view class="result-card">
+      <!-- 结果展示 -->
+      <view class="result-display" style="background: linear-gradient(135deg, {{color}}15, {{color}}08);">
+        <view class="result-circle" style="border-color: {{color}};">
+          <view class="result-content">
+            <text class="result-score">{{score}}</text>
+            <text class="result-label">标准分</text>
+            <text class="result-severity" style="color: {{color}};">{{severity}}</text>
+          </view>
+        </view>
+        <!-- 进度条 -->
+        <view class="result-progress-bar">
+          <view class="result-progress-fill" style="width: {{progress}}%; background: {{color}};"></view>
+        </view>
+        <text class="result-progress-text">评估进度：{{Math.round(progress)}}%</text>
+      </view>
+
+      <!-- 结果描述 -->
+      <view class="result-content">
+        <text class="result-title">{{title}}</text>
+        <text class="result-desc">{{desc}}</text>
+      </view>
+    </view>
+
+    <!-- 详细信息 -->
+    <view class="detail-card">
+      <view class="detail-header">
+        <text class="detail-title">详细信息</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">标准分</text>
+        <text class="detail-value">{{score}} 分</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">总粗分</text>
+        <text class="detail-value">{{rawScore}} 分</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">评估结果</text>
+        <text class="detail-value" style="color: {{color}};">{{severity}}</text>
+      </view>
+    </view>
+
+    <!-- 说明 -->
+    <view class="info-card">
+      <text class="info-title">💡 温馨提示</text>
+      <text class="info-text">• 本量表仅用于自我了解，不能代替专业诊断</text>
+      <text class="info-text">• 情绪波动是正常的，关注自己的感受很重要</text>
+      <text class="info-text">• 如果感到困扰，可以考虑寻求专业支持</text>
+      <text class="info-text">• 保持规律作息、适度运动有助于情绪调节</text>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button class="action-btn secondary" bindtap="viewHistory">
+        查看历史记录
+      </button>
+      <button class="action-btn primary" bindtap="goHome">
+        返回首页
+      </button>
+    </view>
+  </view>
+</scroll-view>
+

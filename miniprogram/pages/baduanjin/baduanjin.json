@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "健身操练习",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  }
+}
+
+
+

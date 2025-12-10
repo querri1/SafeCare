@@ -1,0 +1,67 @@
+<!--打卡日历页面-->
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 未登录提示 -->
+    <view class="login-prompt" wx:if="{{!hasLogin}}">
+      <view class="prompt-icon">🔒</view>
+      <text class="prompt-title">请先登录</text>
+      <text class="prompt-desc">登录后即可查看打卡日历</text>
+      <button class="btn-login" bindtap="goToLogin">前往登录</button>
+    </view>
+
+    <!-- 已登录内容 -->
+    <block wx:if="{{hasLogin}}">
+      <!-- 月份选择器 -->
+      <view class="month-selector">
+        <view class="month-btn" bindtap="prevMonth">‹</view>
+        <text class="month-text">{{currentYear}}年{{currentMonth}}月</text>
+        <view class="month-btn" bindtap="nextMonth">›</view>
+      </view>
+
+      <!-- 日历 -->
+      <view class="calendar-wrapper">
+        <!-- 星期标题 -->
+        <view class="weekdays">
+          <text class="weekday">日</text>
+          <text class="weekday">一</text>
+          <text class="weekday">二</text>
+          <text class="weekday">三</text>
+          <text class="weekday">四</text>
+          <text class="weekday">五</text>
+          <text class="weekday">六</text>
+        </view>
+
+        <!-- 日期网格 -->
+        <view class="calendar-grid">
+          <view 
+            class="calendar-day {{item.hasCheckin ? 'day-checked' : ''}} {{!item.isCurrentMonth ? 'day-other-month' : ''}}"
+            wx:for="{{calendarData}}" 
+            wx:key="index"
+            bindtap="onDayTap"
+            data-day="{{item.day}}"
+            data-is-current-month="{{item.isCurrentMonth}}"
+            data-has-checkin="{{item.hasCheckin}}"
+          >
+            <text class="day-number" wx:if="{{item.day}}">{{item.day}}</text>
+            <view class="check-dot" wx:if="{{item.hasCheckin}}"></view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 图例 -->
+      <view class="legend">
+        <view class="legend-item">
+          <view class="legend-dot checked"></view>
+          <text class="legend-text">已打卡</text>
+        </view>
+        <view class="legend-item">
+          <view class="legend-dot"></view>
+          <text class="legend-text">未打卡</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+

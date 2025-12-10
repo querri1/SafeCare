@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "情绪状态评估",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  }
+}
+
+

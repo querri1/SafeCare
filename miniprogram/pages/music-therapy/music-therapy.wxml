@@ -1,0 +1,209 @@
+<!--五音疗法选择页面-->
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 页面介绍 -->
+    <view class="intro-section">
+      <view class="intro-card">
+        <text class="intro-title">五音疗法</text>
+        <text class="intro-desc">根据中医理论，五音对应五脏，通过聆听特定音律来调节身心健康</text>
+      </view>
+    </view>
+
+    <!-- 五音选择 -->
+    <view class="music-selection">
+      <view class="section-title">
+        <text class="title">选择音律</text>
+        <text class="subtitle">点击选择您想要体验的音律</text>
+      </view>
+
+      <view class="music-grid">
+        <!-- 角音（第一位） -->
+        <view class="music-item" bindtap="selectMusic" data-type="jue" data-name="角音">
+          <view class="music-icon jue">
+            <image class="icon-img" src="../../images/icon-jue.png"></image>
+          </view>
+          <view class="music-content">
+            <text class="music-name">角音</text>
+            <text class="music-desc">对应肝脏，调节肝气</text>
+            <text class="music-effect">疏肝理气，缓解压力</text>
+          </view>
+          <view class="music-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+
+        <!-- 徵音（第二位） -->
+        <view class="music-item" bindtap="selectMusic" data-type="zhi" data-name="徵音">
+          <view class="music-icon zhi">
+            <image class="icon-img" src="../../images/icon-fire.png"></image>
+          </view>
+          <view class="music-content">
+            <text class="music-name">徵音</text>
+            <text class="music-desc">对应心脏，调节心血管</text>
+            <text class="music-effect">振奋精神，增强活力</text>
+          </view>
+          <view class="music-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+
+        <!-- 宫音（第三位） -->
+        <view class="music-item" bindtap="selectMusic" data-type="gong" data-name="宫音">
+          <view class="music-icon gong">
+            <image class="icon-img" src="../../images/icon-gong.png"></image>
+          </view>
+          <view class="music-content">
+            <text class="music-name">宫音</text>
+            <text class="music-desc">对应脾脏，调节脾胃功能</text>
+            <text class="music-effect">舒缓情绪，增强食欲</text>
+          </view>
+          <view class="music-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+
+        <!-- 商音（第四位） -->
+        <view class="music-item" bindtap="selectMusic" data-type="shang" data-name="商音">
+          <view class="music-icon shang">
+            <image class="icon-img" src="../../images/icon-shang.png"></image>
+          </view>
+          <view class="music-content">
+            <text class="music-name">商音</text>
+            <text class="music-desc">对应肺脏，调节呼吸系统</text>
+            <text class="music-effect">清肺润燥，缓解咳嗽</text>
+          </view>
+          <view class="music-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+
+        <!-- 羽音（第五位） -->
+        <view class="music-item" bindtap="selectMusic" data-type="yu" data-name="羽音">
+          <view class="music-icon yu">
+            <image class="icon-img" src="../../images/icon-yu.png"></image>
+          </view>
+          <view class="music-content">
+            <text class="music-name">羽音</text>
+            <text class="music-desc">对应肾脏，调节泌尿系统</text>
+            <text class="music-effect">滋阴补肾，安神助眠</text>
+          </view>
+          <view class="music-arrow">
+            <text class="arrow">></text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载提示 -->
+    <view class="loading-overlay" wx:if="{{isLoading}}">
+      <view class="loading-content">
+        <view class="loading-spinner"></view>
+        <text class="loading-text">加载音频中...</text>
+      </view>
+    </view>
+
+    <!-- 播放器（支持所有音律） -->
+    <view class="player-section" wx:if="{{currentMusicType}}">
+      <view class="player-card">
+        <view class="player-header">
+          <view class="player-title-group">
+            <text class="player-label">当前疗愈</text>
+            <text class="player-title">{{musicConfig[currentMusicType].name}} · {{musicConfig[currentMusicType].desc}}</text>
+          </view>
+          <view class="player-status">
+            <text class="player-status-text">{{ isPlaying ? '播放中' : '已暂停' }}</text>
+          </view>
+        </view>
+
+        <view class="player-progress">
+          <slider 
+            class="player-slider"
+            value="{{progress || 0}}" 
+            min="0" 
+            max="100" 
+            step="0.1"
+            activeColor="#34D399"
+            backgroundColor="#e5e7eb"
+            block-color="#34D399"
+            block-size="20"
+            bindchange="onProgressChange"
+            bindchanging="onProgressChanging"
+          />
+          <view class="player-time-row">
+            <text class="player-time">{{formattedCurrentTime || '00:00'}}</text>
+            <text class="player-time">{{formattedDuration || '00:00'}}</text>
+          </view>
+        </view>
+
+        <view class="player-actions">
+          <button class="player-btn main" bindtap="togglePlay">
+            {{ isPlaying ? '暂停' : '继续疗愈' }}
+          </button>
+          <button class="player-btn secondary" bindtap="stopTherapy">
+            结束本次疗愈
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 播放列表（支持所有音律） -->
+    <view class="playlist-section" wx:if="{{currentMusicType && playlistData[currentMusicType] && playlistData[currentMusicType].length > 0}}">
+      <view class="playlist-card">
+        <view class="playlist-header">
+          <text class="playlist-title">播放列表</text>
+          <text class="playlist-count">共 {{playlistData[currentMusicType].length}} 首</text>
+        </view>
+        <view class="playlist-content">
+          <view 
+            class="playlist-item {{currentIndex === item.index ? 'active' : ''}}" 
+            wx:for="{{playlistData[currentMusicType]}}" 
+            wx:key="index"
+            bindtap="selectSong"
+            data-index="{{item.index}}"
+          >
+            <view class="playlist-item-icon">
+              <text class="playlist-item-number" wx:if="{{currentIndex !== item.index}}">{{item.index + 1}}</text>
+              <text class="playlist-item-playing" wx:if="{{currentIndex === item.index}}">♪</text>
+            </view>
+            <view class="playlist-item-content">
+              <text class="playlist-item-name">{{item.name}}</text>
+              <text class="playlist-item-status" wx:if="{{currentIndex === item.index}}">
+                {{ isPlaying ? '播放中' : '已暂停' }}
+              </text>
+            </view>
+            <view class="playlist-item-arrow" wx:if="{{currentIndex === item.index}}">
+              <text class="arrow">▶</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 使用说明 -->
+    <view class="usage-guide">
+      <view class="guide-title">
+        <text class="title">使用说明</text>
+      </view>
+      <view class="guide-content">
+        <view class="guide-item">
+          <text class="guide-number">1</text>
+          <text class="guide-text">选择适合您当前状态的音律</text>
+        </view>
+        <view class="guide-item">
+          <text class="guide-number">2</text>
+          <text class="guide-text">建议在安静的环境中聆听</text>
+        </view>
+        <view class="guide-item">
+          <text class="guide-number">3</text>
+          <text class="guide-text">每次聆听10-15分钟效果最佳</text>
+        </view>
+        <view class="guide-item">
+          <text class="guide-number">4</text>
+          <text class="guide-text">可以闭目养神，放松身心</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

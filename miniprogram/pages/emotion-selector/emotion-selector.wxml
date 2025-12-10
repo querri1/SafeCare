@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="header">
+    <text class="title">记录此刻的心情</text>
+    <text class="subtitle">选择最符合你当前状态的选项</text>
+  </view>
+
+  <view class="emotion-list">
+    <view class="emotion-group" wx:for="{{emotionList}}" wx:key="type">
+      <text class="emotion-name">{{item.name}}</text>
+      <view class="emotion-levels">
+        <view 
+          class="emotion-item {{selectedEmotion === item.type && selectedLevel === level.value ? 'selected' : ''}}"
+          wx:for="{{item.levels}}" 
+          wx:for-item="level"
+          wx:key="value"
+          bindtap="selectEmotion"
+          data-emotion="{{item.type}}"
+          data-level="{{level.value}}"
+        >
+          <text class="emotion-emoji">{{level.emoji}}</text>
+          <text class="emotion-text">{{item.name}}·{{level.text}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-section">
+    <button class="btn-cancel" bindtap="cancel">取消</button>
+    <button class="btn-confirm {{selectedEmotion ? '' : 'disabled'}}" bindtap="confirm" disabled="{{!selectedEmotion}}">
+      确认
+    </button>
+  </view>
+</view>
+

@@ -1,0 +1,57 @@
+<!--隐私设置页面-->
+<navigation-bar title="" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 数据同步 -->
+    <view class="privacy-section">
+      <view class="privacy-header">
+        <view class="privacy-info">
+          <text class="privacy-title">数据同步</text>
+          <text class="privacy-desc">允许应用同步您的数据到云端</text>
+        </view>
+        <switch checked="{{dataSync}}" bindchange="toggleDataSync" color="#34D399"/>
+      </view>
+    </view>
+
+    <!-- 数据分析 -->
+    <view class="privacy-section">
+      <view class="privacy-header">
+        <view class="privacy-info">
+          <text class="privacy-title">数据分析</text>
+          <text class="privacy-desc">允许应用分析您的使用数据以改进服务</text>
+        </view>
+        <switch checked="{{analytics}}" bindchange="toggleAnalytics" color="#34D399"/>
+      </view>
+    </view>
+
+    <!-- 数据分享 -->
+    <view class="privacy-section">
+      <view class="privacy-header">
+        <view class="privacy-info">
+          <text class="privacy-title">数据分享</text>
+          <text class="privacy-desc">允许匿名分享数据用于产品改进（不包含个人信息）</text>
+        </view>
+        <switch checked="{{shareData}}" bindchange="toggleShareData" color="#34D399"/>
+      </view>
+    </view>
+
+    <!-- 清除数据 -->
+    <view class="danger-section">
+      <view class="danger-header">
+        <text class="danger-title">清除所有数据</text>
+        <text class="danger-desc">清除所有本地存储的数据（不包括云端数据）</text>
+      </view>
+      <button class="btn-danger" bindtap="clearAllData">清除数据</button>
+    </view>
+
+    <!-- 隐私说明 -->
+    <view class="info-section">
+      <text class="info-title">隐私说明</text>
+      <text class="info-text">• 您的所有数据都存储在微信云开发环境中，我们不会访问您的个人信息</text>
+      <text class="info-text">• 数据同步功能用于在多设备间同步您的数据</text>
+      <text class="info-text">• 数据分析仅用于改进产品体验，不会泄露您的隐私</text>
+    </view>
+  </view>
+</scroll-view>
+
