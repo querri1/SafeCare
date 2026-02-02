@@ -958,5 +958,25 @@ Page({
     const mm = m < 10 ? '0' + m : '' + m
     const ss = s < 10 ? '0' + s : '' + s
     return `${mm}:${ss}`
+  },
+
+  // 转发给朋友
+  onShareAppMessage(options) {
+    const currentMusic = this.data.currentMusicType
+    const musicName = currentMusic ? this.data.musicConfig[currentMusic]?.name || '五音疗法' : '五音疗法'
+    return {
+      title: `推荐${musicName} - 安心宝心理健康管理`,
+      path: '/pages/music-therapy/music-therapy',
+      imageUrl: '' // 可选：分享图片
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: '五音疗法，用音乐治愈心灵 - 安心宝',
+      query: '',
+      imageUrl: '' // 可选：分享图片
+    }
   }
 })

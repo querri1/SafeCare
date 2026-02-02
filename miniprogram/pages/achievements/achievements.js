@@ -348,6 +348,26 @@ Page({
     wx.switchTab({
       url: '/pages/profile/profile'
     })
+  },
+
+  // 转发给朋友
+  onShareAppMessage(options) {
+    const unlockedCount = this.data.unlockedCount || 0
+    return {
+      title: `我在安心宝已解锁${unlockedCount}个成就，一起来关注心理健康吧！`,
+      path: '/pages/achievements/achievements',
+      imageUrl: '' // 可选：分享图片
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    const unlockedCount = this.data.unlockedCount || 0
+    return {
+      title: `我在安心宝已解锁${unlockedCount}个成就，记录心理健康，见证自我成长！`,
+      query: '',
+      imageUrl: '' // 可选：分享图片
+    }
   }
 })
 

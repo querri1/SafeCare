@@ -882,6 +882,24 @@ Page({
         console.error('查询评分数据失败', err)
         this.setData({ scoreWeekData })
       })
+  },
+
+  // 转发给朋友
+  onShareAppMessage(options) {
+    return {
+      title: '我的心理健康数据 - 安心宝',
+      path: '/pages/data-center/data-center',
+      imageUrl: '' // 可选：分享图片
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: '记录心理健康，关注自我成长 - 安心宝',
+      query: '',
+      imageUrl: '' // 可选：分享图片
+    }
   }
 })
 

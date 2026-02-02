@@ -42,6 +42,25 @@ Page({
     wx.navigateTo({
       url: '/pages/test-records/test-records?range=all'
     })
+  },
+
+  // 转发给朋友
+  onShareAppMessage(options) {
+    const severity = this.data.severity || '正常'
+    return {
+      title: `我的心理健康测试结果：${severity} - 安心宝`,
+      path: `/pages/sas-result/sas-result?score=${this.data.score}&rawScore=${this.data.rawScore}&severity=${this.data.severity}&progress=${this.data.progress}&title=${encodeURIComponent(this.data.title)}&desc=${encodeURIComponent(this.data.desc)}&color=${this.data.color}`,
+      imageUrl: '' // 可选：分享图片
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: '关注心理健康，定期自我评估 - 安心宝',
+      query: '',
+      imageUrl: '' // 可选：分享图片
+    }
   }
 })
 

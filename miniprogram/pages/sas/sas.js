@@ -16,13 +16,13 @@ Page({
       { text: '我觉得心跳得很快（心悸）', reverse: false },
       { text: '我因为一阵阵头晕而苦恼（头昏）', reverse: false },
       { text: '我有晕倒发作，或觉得要晕倒似的（晕厥感）', reverse: false },
-      { text: '我吸气呼气都感到很容易(呼吸困难)', reverse: true }, // 反向
+      { text: '我吸气呼气都感到很容易', reverse: true }, // 反向
       { text: '我手脚麻木和刺痛（手足刺痛）', reverse: false },
       { text: '我因胃痛和消化不良而苦恼（胃痛或者消化不良）', reverse: false },
       { text: '我常常要小便', reverse: false },
       { text: '我的手常常是干燥温暖的', reverse: true }, // 反向
       { text: '我脸红发热（面部潮红）', reverse: false },
-      { text: '我容易入睡并且一夜睡得很好（睡眠障碍）', reverse: true }, // 反向
+      { text: '我容易入睡并且一夜睡得很好', reverse: true }, // 反向
       { text: '我做恶梦（恶梦）', reverse: false }
     ],
     options: [

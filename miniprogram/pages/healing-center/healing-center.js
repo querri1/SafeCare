@@ -607,6 +607,24 @@ Page({
         // 如果选择"下次再提醒我"，不做任何操作，下次进入页面时还会提醒
       }
     })
+  },
+
+  // 转发给朋友
+  onShareAppMessage(options) {
+    return {
+      title: '安心宝 - 您的心理健康管理助手',
+      path: '/pages/healing-center/healing-center',
+      imageUrl: '' // 可选：分享图片，建议使用小程序码或封面图
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: '安心宝 - 您的心理健康管理助手，一起来关注心理健康吧！',
+      query: '',
+      imageUrl: '' // 可选：分享图片
+    }
   }
 })
 

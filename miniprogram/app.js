@@ -39,6 +39,16 @@ App({
     } catch (err) {
       console.error('日志保存失败:', err)
     }
+
+    // 启用分享功能（转发给朋友和分享到朋友圈）
+    try {
+      wx.showShareMenu({
+        withShareTicket: true,
+        menus: ['shareAppMessage', 'shareTimeline']
+      })
+    } catch (err) {
+      console.error('启用分享菜单失败:', err)
+    }
   },
 
   onError(err) {

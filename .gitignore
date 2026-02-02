@@ -28,3 +28,44 @@ dist
 .idea
 .vscode
 .wxml
+
+# Windows
+[Dd]esktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+
+# Node.js
+node_modules/
+.env
+.env.local
+.env.development
+.env.test.local
+.env.production.local
+
+# 微信小程序
+miniprogram_npm/
+project.private.config.json
+dist/
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 日志文件
+*.log
+npm-debug.log*
+
+# 临时文件
+*.tmp
+*.temp

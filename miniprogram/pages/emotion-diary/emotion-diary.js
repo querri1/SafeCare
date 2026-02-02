@@ -254,6 +254,24 @@ Page({
         }
       }
     })
+  },
+
+  // 转发给朋友
+  onShareAppMessage(options) {
+    return {
+      title: '记录情绪日记，关注心理健康 - 安心宝',
+      path: `/pages/emotion-diary/emotion-diary?date=${this.data.currentDateStr}`,
+      imageUrl: '' // 可选：分享图片
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: '记录情绪日记，与自己对话 - 安心宝心理健康管理',
+      query: `date=${this.data.currentDateStr}`,
+      imageUrl: '' // 可选：分享图片
+    }
   }
 })
 

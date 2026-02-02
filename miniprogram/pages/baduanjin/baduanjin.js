@@ -351,6 +351,26 @@ Page({
     const minutes = Math.floor(seconds / 60)
     const secs = seconds % 60
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
+  },
+
+  // 转发给朋友
+  onShareAppMessage(options) {
+    const exerciseTitle = this.data.exerciseTitle || '健身操'
+    return {
+      title: `推荐${exerciseTitle} - 安心宝心理健康管理`,
+      path: `/pages/baduanjin/baduanjin?type=${this.data.exerciseType}`,
+      imageUrl: '' // 可选：分享图片
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    const exerciseTitle = this.data.exerciseTitle || '健身操'
+    return {
+      title: `${exerciseTitle}，一起动起来，保持身心健康 - 安心宝`,
+      query: `type=${this.data.exerciseType}`,
+      imageUrl: '' // 可选：分享图片
+    }
   }
 })
 
