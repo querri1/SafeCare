@@ -182,17 +182,10 @@ Page({
     }
     // 隐藏loading
     wx.hideLoading()
-    if (this.innerAudioContext) {
-      this.innerAudioContext.stop()
-      this.innerAudioContext.destroy()
-    }
   },
 
   onHide() {
-    if (this.innerAudioContext && this.data.isPlaying) {
-      this.innerAudioContext.pause()
-      this.setData({ isPlaying: false })
-    }
+    // 保持后台播放能力，页面隐藏时不主动暂停音频
   },
 
   // 选择音律
@@ -256,34 +249,36 @@ Page({
   // 确保音频上下文存在且有效
   ensureAudioContext() {
     if (!this.innerAudioContext) {
-      console.log('音频上下文不存在，重新创建')
+      console.log('音频上下文不存在，使用后台音频管理器重新初始化')
       this.initAudioContext()
     }
     return this.innerAudioContext
   },
 
-  // 初始化音频上下文
+  // 初始化音频上下文（使用后台音频管理器，支持锁屏后台播放）
   initAudioContext() {
-    // 如果已存在，先销毁
-    if (this.innerAudioContext) {
-      try {
-        this.innerAudioContext.stop()
-        this.innerAudioContext.destroy()
-      } catch (e) {
-        console.warn('销毁旧音频上下文失败', e)
-      }
+    // 使用全局后台音频管理器
+    if (!this.innerAudioContext) {
+      this.innerAudioContext = wx.getBackgroundAudioManager()
     }
 
-    // 创建新的音频上下文
-    this.innerAudioContext = wx.createInnerAudioContext()
-    
-    // 设置音频播放参数
-    this.innerAudioContext.volume = 1.0
+    // 设置基础元信息（会在实际播放时根据曲目名称再更新）
+    this.innerAudioContext.title = '五音疗法'
+    this.innerAudioContext.epname = '安心宝 · 五音疗法'
+    this.innerAudioContext.singer = '安心宝'
+
+    // iOS 静音开关下仍可播放
     this.innerAudioContext.obeyMuteSwitch = false
-    this.innerAudioContext.autoplay = false
-    
-    // 绑定事件
-    this.bindAudioEvents()
+    // 默认音量设置为最大（部分机型支持）
+    if (typeof this.innerAudioContext.volume === 'number') {
+      this.innerAudioContext.volume = 1.0
+    }
+
+    // 只绑定一次事件，避免重复绑定
+    if (!this._audioEventsBound) {
+      this.bindAudioEvents()
+      this._audioEventsBound = true
+    }
   },
 
   // 绑定音频事件
@@ -503,7 +498,7 @@ Page({
 
   // 播放当前索引对应的音频（支持所有音律）
   playCurrentMusic() {
-    const { currentMusicType, currentIndex, playlists } = this.data
+    const { currentMusicType, currentIndex, playlists, musicConfig, playlistData } = this.data
     if (!currentMusicType) {
       console.error('未选择音律类型')
       return
@@ -578,6 +573,21 @@ Page({
       if (!audioContext) {
         throw new Error('音频上下文无效')
       }
+
+      // 设置后台音频的展示信息（在通知栏 / 锁屏界面展示）
+      const config = musicConfig[currentMusicType] || {}
+      // 从播放列表数据中找到当前曲目的名称
+      let songName = ''
+      const currentPlaylistData = playlistData[currentMusicType] || []
+      const currentItem = currentPlaylistData.find(item => item.index === currentIndex)
+      if (currentItem && currentItem.name) {
+        songName = currentItem.name
+      }
+
+      const title = songName || config.name || '五音疗法'
+      audioContext.title = title
+      audioContext.epname = '安心宝 · 五音疗法'
+      audioContext.singer = '安心宝'
 
       // 设置音频源
       audioContext.src = src
@@ -933,7 +943,7 @@ Page({
     const targetTime = (value / 100) * duration
     
     try {
-      // 跳转到指定位置
+      // 跳转到指定位置（后台音频管理器同样支持 seek）
       this.innerAudioContext.seek(targetTime)
       this.setData({
         currentTime: targetTime,
